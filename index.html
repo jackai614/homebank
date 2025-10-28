@@ -58,7 +58,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 15px 0;
+            padding: 10px 0 0 0;
         }
 
         .logo {
@@ -71,6 +71,7 @@
             height: 80px;
             background-color: var(--primary-color);
             border-radius: 50%;
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -78,6 +79,11 @@
             color: var(--white);
             font-weight: bold;
             font-size: 24px;
+        }
+
+        .logo-img img {
+            width: 100%;
+            height: 100%;
         }
 
         .logo-text h1 {
@@ -124,11 +130,19 @@
         }
 
         /* 轮播图样式 */
+        #home {
+            margin-top: 10px;
+        }
+
         .hero {
             position: relative;
-            height: 500px;
+            height: 666px;
             overflow: hidden;
-            margin-bottom: 50px;
+            /* margin-bottom: 30px; */
+        }
+
+        #home {
+            padding: 0;
         }
 
         .hero-slide {
@@ -137,7 +151,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-size: cover;
+            background-size: 100% 100%;
             background-position: center;
             opacity: 0;
             transition: opacity 1s ease;
@@ -153,7 +167,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.4);
+            /* background: rgba(0, 0, 0, 0.4); */
         }
 
         .hero-content {
@@ -562,6 +576,11 @@
             color: #fff;
         }
 
+        .tel {
+            color: #fff;
+            text-decoration: none;
+        }
+
         /* 响应式设计 */
         @media (max-width: 992px) {
 
@@ -582,7 +601,7 @@
             }
 
             .logo {
-                margin-bottom: 15px;
+                margin-bottom: 10px;
                 justify-content: center;
             }
 
@@ -596,7 +615,15 @@
             }
 
             .hero {
-                height: 400px;
+                height: 200px;
+            }
+
+            #home {
+                margin-top: 0;
+            }
+
+            .logo-text h1 {
+                font-size: 16px;
             }
 
             .hero-content h2 {
@@ -611,8 +638,16 @@
                 font-size: 28px;
             }
 
+            .quick-links {
+                display: none;
+            }
+
             .mobile-menu-btn {
                 display: block;
+                position: absolute;
+                right: 10px;
+                top: 0px;
+                color: #fff;
             }
 
             nav {
@@ -655,7 +690,7 @@
         <div class="header-top">
             <div class="container">
                 <div class="contact-info">
-                    <span><i class="fas fa-phone"></i> 电话：13569022233</span>
+                    <span><i class="fas fa-phone"></i> 电话：<a class="tel" href="tel:13569022233">13569022233</a></span>
                     <!-- <span style="margin-left: 20px;"><i class="fas fa-envelope"></i> 邮箱：</span> -->
                 </div>
                 <div class="quick-links">
@@ -668,7 +703,7 @@
             <div class="header-main">
                 <div class="logo">
                     <div class="logo-img">
-                        兴农
+                        <img src="./images/logo.jpeg" alt="">
                     </div>
                     <div class="logo-text">
                         <h1>内黄县兴农果树栽培有限公司</h1>
@@ -692,31 +727,28 @@
 
     <!-- 轮播图 -->
     <section class="hero" id="home">
-        <div class="hero-slide active"
-            style="background-image: url('./images/banner1.jpg');">
+        <div class="hero-slide active" style="background-image: url('./images/banner1.jpg');">
             <div class="hero-overlay"></div>
             <div class="hero-content">
-                <h2>专业果树栽培与技术服务</h2>
+                <!-- <h2>专业果树栽培与技术服务</h2>
                 <p>内黄县兴农果树栽培有限公司，致力于优质果树苗木的繁育、栽培技术研究与推广</p>
-                <a href="#about" class="btn">了解更多</a>
+                <a href="#about" class="btn">了解更多</a> -->
             </div>
         </div>
-        <div class="hero-slide"
-            style="background-image: url('./images/banner2.jpg');">
+        <div class="hero-slide" style="background-image: url('./images/banner2.jpg');">
             <div class="hero-overlay"></div>
             <div class="hero-content">
-                <h2>农业科技示范基地</h2>
+                <!-- <h2>农业科技示范基地</h2>
                 <p>引进先进技术，培育优质品种，服务广大果农</p>
-                <a href="#products" class="btn">查看详情</a>
+                <a href="#products" class="btn">查看详情</a> -->
             </div>
         </div>
-        <div class="hero-slide"
-            style="background-image: url('./images/banner3.jpg');">
+        <div class="hero-slide" style="background-image: url('./images/banner3.jpg');">
             <div class="hero-overlay"></div>
             <div class="hero-content">
-                <h2>绿色生态农业倡导者</h2>
+                <!-- <h2>绿色生态农业倡导者</h2>
                 <p>坚持绿色、生态、可持续的农业发展理念</p>
-                <a href="#contact" class="btn">联系我们</a>
+                <a href="#contact" class="btn">联系我们</a> -->
             </div>
         </div>
         <div class="hero-nav">

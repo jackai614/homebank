@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>内黄县兴农果树栽培有限公司 - 专业果树苗木繁育与技术服务</title>
+    <meta name="keywords" content="抗重茬桃苗,油蟠桃苗繁育基地,河南新品种桃苗基地">
+    <meta name="description"
+        content="内黄县兴农果树栽培有限公司成立于2005年，位于河南省安阳市内黄县，公司专注于果树苗木的繁育、栽培技术研究与推广，是河南省林业产业化重点龙头企业。公司拥有标准化苗木繁育基地500余亩，年产优质果树苗木200多万株，品种包括普通桃、油桃、毛蟠桃、油蟠桃、黄桃系列等210多个品种。">
+    <meta name="author" content="内黄县兴农果树栽培有限公司自研团队">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 全局样式 */
+        :root {
+            --primary-color: #2e7d32;
+            --primary-light: #4caf50;
+            --primary-dark: linear-gradient(135deg, #2e7d32 0%, #4caf50 100%);
+            --secondary-color: #ff9800;
+            --light-bg: #f5f9f5;
+            --text-dark: #333;
+            --text-light: #666;
+            --white: #fff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--white);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            width: 100%;
+        }
+
+        /* 头部样式 */
+        .header-top {
+            background: var(--primary-dark);
+            color: var(--white);
+            padding: 8px 0;
+            font-size: 14px;
+        }
+
+        .header-top .container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .header-main {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 0 0 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            width: 80px;
+            height: 80px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--white);
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+        .logo-img img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .logo-text h1 {
+            font-size: 24px;
+            color: var(--primary-dark);
+            margin-bottom: 5px;
+        }
+
+        .logo-text p {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav li {
+            margin: 0 10px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        nav a:hover,
+        nav a.active {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* 主内容区域样式 */
+        .main-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0px 20px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #f57c00;
+            transform: translateY(-2px);
+        }
+
+        /* 页脚样式 */
+        footer {
+            background: var(--primary-dark);
+            color: white;
+            padding: 50px 0 20px;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary-color);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary-color);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+        }
+
+        .quick-links a {
+            color: #fff;
+        }
+
+        .tel {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .liner {
+            width: 100%;
+            background: linear-gradient(135deg, #2e7d32 0%, #4caf50 100%);
+            color: white;
+            padding: 2px 0;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(46, 125, 50, 0.3);
+            margin: 10px 0;
+        }
+
+        .company-info h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .company-info .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        /* 产品网格 */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 2px solid #e8f5e9;
+        }
+
+        .product-card:hover .product-link {
+            /* display: inline-block; */
+            transform: translateY(0px);
+            z-index: 1;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(46, 125, 50, 0.2);
+            border-color: #4caf50;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, #c8e6c9, #a5d6a7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3em;
+            color: #2e7d32;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+        }
+
+        .product-content {
+            padding: 20px;
+        }
+
+        .product-title {
+            color: #2e7d32;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .product-description {
+            color: #666;
+            font-size: 0.95em;
+            white-space: nowrap;
+            /* 防止文本换行 */
+            overflow: hidden;
+            /* 隐藏超出容器的文本 */
+            text-overflow: ellipsis;
+            /* 显示省略号来代表被修剪的文本 */
+            /* margin-bottom: 15px; */
+        }
+
+        /* .product-price {
+            color: #e65100;
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        } */
+
+        .main-content .product-link {
+            color: white;
+            padding: 8px 20px;
+            text-decoration: none;
+            /* border-radius: 25px; */
+            font-weight: bold;
+            transition: all 0.3s ease;
+            transform: translateY(550px);
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: -1;
+        }
+
+        .main-content .product-link:hover {
+            background: rgba(46, 125, 50, 0.7);
+            transform: scale(1.05);
+        }
+
+        /* 特色区域 */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .feature-item {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #4caf50;
+        }
+
+        .feature-icon {
+            font-size: 2.5em;
+            color: #4caf50;
+            margin-bottom: 15px;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .features {
+                display: none;
+            }
+
+            .header-main {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .logo {
+                margin-bottom: 10px;
+                justify-content: center;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav li {
+                margin: 5px 10px;
+            }
+
+            .logo-text h1 {
+                font-size: 16px;
+            }
+
+            .quick-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                right: 10px;
+                top: 0px;
+                color: #fff;
+            }
+
+            nav {
+                display: none;
+                width: 100%;
+                margin-top: 15px;
+            }
+
+            nav.active {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav li {
+                margin: 5px 0;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            .header-top .container {
+                padding: 0 15px;
+            }
+
+            .liner {
+                margin: 0;
+            }
+
+            .company-info h1 {
+                font-size: 2em;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 头部 -->
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <div class="contact-info">
+                    <span><i class="fas fa-phone"></i> 电话：<a class="tel" href="tel:13569022233">13569022233</a></span>
+                </div>
+                <div class="quick-links">
+                    <a href="#">设为首页</a> |
+                    <a href="#">加入收藏</a>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="header-main">
+                <div class="logo">
+                    <div class="logo-img">
+                        <img src="/images/logo.jpeg" alt="内黄县兴农果树栽培有限公司">
+                    </div>
+                    <div class="logo-text">
+                        <h1>内黄县兴农果树栽培有限公司</h1>
+                        <p>专业果树栽培与农业技术服务</p>
+                    </div>
+                </div>
+                <nav id="main-nav">
+                    <ul>
+                        <li><a href="/">首页</a></li>
+                        <li><a href="#about">关于我们</a></li>
+                        <li><a href="/a/productions/index.html" class="active">产品展示</a></li>
+                        <li><a href="#news">学习中心</a></li>
+                        <li><a href="#services">领导关怀</a></li>
+                        <li><a href="#contact">媒体中心</a></li>
+                    </ul>
+                </nav>
+                <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+            </div>
+        </div>
+    </header>
+    <div class="liner"></div>
+
+    <!-- 主内容区域 -->
+    <main class="main-content">
+        <div class="container">
+            <section class="features">
+                <div class="feature-item">
+                    <div class="feature-icon">🌳</div>
+                    <h3>专业栽培</h3>
+                    <p>中高级农技师带领团队，科学种植</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🍎</div>
+                    <h3>品质优良</h3>
+                    <p>绿色无公害，果实饱满香甜</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🚚</div>
+                    <h3>销往全国</h3>
+                    <p>全国大型商超、批发商前来采购</p>
+                </div>
+            </section>
+
+            <section class="products-section">
+                <h2 style="text-align: center; color: #2e7d32; margin: 30px 0; font-size: 2em;">毛蟠桃介绍</h2>
+                <div class="products-grid" id="productsContainer">
+                    <div class="product-card"
+                        title="中蟠11号平均单果重250克，大果300克以上; 果皮有毛，底色黄，果面80%以上着鲜红色晕，十分美观，皮不能剥离;果肉橙黄色，肉质为硬溶质,耐贮运;纤维中等;果实风味浓甜,有香味，可溶性固形物含量15%。粘核,在河南省内黄县，7月中下旬成熟。">
+                        <div class="product-image"> <img src="/images/fruits/tao/tao10.jpg" alt="中蟠11号"> </div>
+                        <div class="product-content">
+                            <h3 class="product-title">中蟠11号</h3>
+                            <p class="product-description">
+                                中蟠11号平均单果重250克，大果300克以上;
+                                果皮有毛，底色黄，果面80%以上着鲜红色晕，十分美观，皮不能剥离;果肉橙黄色，肉质为硬溶质,耐贮运;纤维中等;果实风味浓甜,有香味，可溶性固形物含量15%。粘核,在河南省内黄县，7月中下旬成熟。
+                        </div>
+                        <a href="/a/productions/infor.html?id=20" class="product-link" target="_blank"> 查看详情 </a>
+                    </div>
+                    <div class="product-card"
+                        title="中蟠13号—黄肉蟠桃，7月上旬成熟，果皮75%着红色、茸毛短、干净、漂亮，似水洗一般，果实大、均匀，果顶平、果肉厚、细腻、不撕皮，单果重180克，风味浓甜、香，极丰产，综合性状很好，适宜规模化发展。">
+                        <div class="product-image"> <img src="/images/fruits/tao/tao11.jpg" alt="中蟠13号"> </div>
+                        <div class="product-content">
+                            <h3 class="product-title">中蟠13号</h3>
+                            <p class="product-description">
+                                中蟠13号—黄肉蟠桃，7月上旬成熟，果皮75%着红色、茸毛短、干净、漂亮，似水洗一般，果实大、均匀，果顶平、果肉厚、细腻、不撕皮，单果重180克，风味浓甜、香，极丰产，综合性状很好，适宜规模化发展。
+                        </div>
+                        <a href="/a/productions/infor.html?id=21" class="product-link" target="_blank"> 查看详情 </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>关于我们</h3>
+                    <ul class="footer-links">
+                        <li><a href="#about">公司简介</a></li>
+                        <!-- <li><a href="#">发展历程</a></li> -->
+                        <li><a href="#">荣誉资质</a></li>
+                        <li><a href="#">企业文化</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>产品中心</h3>
+                    <ul class="footer-links">
+                        <li><a href="/a/productions/maotao.html">甜毛桃</a></li>
+                        <li><a href="/a/productions/youpan.html">油蟠桃</a></li>
+                        <li><a href="/a/productions/youtao.html">油桃</a></li>
+                        <li><a href="/a/productions/maopan.html">毛蟠桃</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>学习中心</h3>
+                    <ul class="footer-links">
+                        <li><a href="#services">在线学习</a></li>
+                        <li><a href="#services">培训交流</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>媒体中心</h3>
+                    <ul class="footer-links">
+                        <li><a href="#contact">视频采访</a></li>
+                        <li><a href="#contact">媒体报道</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>版权所有 © <span id="year"></span> 内黄县兴农果树栽培有限公司 <a target="_blank" style="color: #fff;"
+                        href="https://beian.miit.gov.cn/">豫ICP备17041640号</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 显示当前年份
+        document.getElementById('year').innerText = new Date().getFullYear();
+
+        // 移动端菜单切换
+        document.addEventListener('DOMContentLoaded', function () {
+            const mobileMenuBtn = document.querySelector('#mobile-menu-btn');
+            const nav = document.querySelector('#main-nav');
+
+            mobileMenuBtn.addEventListener('click', () => {
+                nav.classList.toggle('active');
+            });
+
+            // 导航链接高亮
+            const navLinks = document.querySelectorAll('nav a');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    // 移除所有active类
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    // 为当前点击的链接添加active类
+                    this.classList.add('active');
+
+                    // 移动端点击后关闭菜单
+                    if (window.innerWidth <= 768) {
+                        nav.classList.remove('active');
+                    }
+                });
+            });
+
+            // 平滑滚动（为页面内锚点链接）
+            navLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+
+                    // 如果是页面内锚点链接
+                    if (href.startsWith('#')) {
+                        e.preventDefault();
+
+                        const targetId = href.substring(1);
+                        const targetElement = document.getElementById(targetId);
+
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 80,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

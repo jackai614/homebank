@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>内黄县兴农果树栽培有限公司 - 专业果树苗木繁育与技术服务</title>
+    <meta name="keywords" content="中桃抗砧一号,油蟠桃苗繁育基地,河南新品种桃苗基地">
+    <meta name="description"
+        content="内黄县兴农果树栽培有限公司成立于2005年，位于河南省安阳市内黄县，公司专注于果树苗木的繁育、栽培技术研究与推广，是河南省林业产业化重点龙头企业。公司拥有标准化苗木繁育基地500余亩，年产优质果树苗木200多万株，品种包括普通桃、油桃、毛蟠桃、油蟠桃、黄桃系列等210多个品种。">
+    <meta name="author" content="内黄县兴农果树栽培有限公司自研团队">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 全局样式 */
+        :root {
+            --primary-color: #2e7d32;
+            --primary-light: #4caf50;
+            --primary-dark: linear-gradient(135deg, #2e7d32 0%, #4caf50 100%);
+            --secondary-color: #ff9800;
+            --light-bg: #f5f9f5;
+            --text-dark: #333;
+            --text-light: #666;
+            --white: #fff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--white);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            width: 100%;
+        }
+
+        /* 头部样式 */
+        .header-top {
+            background: var(--primary-dark);
+            color: var(--white);
+            padding: 8px 0;
+            font-size: 14px;
+        }
+
+        .header-top .container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .header-main {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 0 0 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            width: 80px;
+            height: 80px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--white);
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+        .logo-img img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .logo-text h1 {
+            font-size: 24px;
+            color: var(--primary-dark);
+            margin-bottom: 5px;
+        }
+
+        .logo-text p {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav li {
+            margin: 0 10px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        nav a:hover,
+        nav a.active {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* 主内容区域样式 */
+        .main-content {
+            flex: 1;
+            min-height: 400px;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 页脚样式 */
+        footer {
+            background: var(--primary-dark);
+            color: white;
+            padding: 50px 0 20px;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary-color);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary-color);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+        }
+
+        .quick-links a {
+            color: #fff;
+        }
+
+        .tel {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .liner {
+            width: 100%;
+            background: linear-gradient(135deg, #2e7d32 0%, #4caf50 100%);
+            color: white;
+            padding: 2px 0;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(46, 125, 50, 0.3);
+            margin: 10px 0;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .header-main {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .logo {
+                margin-bottom: 10px;
+                justify-content: center;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav li {
+                margin: 5px 10px;
+            }
+
+            .logo-text h1 {
+                font-size: 16px;
+            }
+
+            .quick-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                right: 10px;
+                top: 0px;
+                color: #fff;
+            }
+
+            nav {
+                display: none;
+                width: 100%;
+                margin-top: 15px;
+            }
+
+            nav.active {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav li {
+                margin: 5px 0;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            .header-top .container {
+                padding: 0 15px;
+            }
+
+            .liner {
+                margin: 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 头部 -->
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <div class="contact-info">
+                    <span><i class="fas fa-phone"></i> 电话：<a class="tel" href="tel:13569022233">13569022233</a></span>
+                </div>
+                <div class="quick-links">
+                    <a href="#">设为首页</a> |
+                    <a href="#">加入收藏</a>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="header-main">
+                <div class="logo">
+                    <div class="logo-img">
+                        <img src="/images/logo.jpeg" alt="内黄县兴农果树栽培有限公司">
+                    </div>
+                    <div class="logo-text">
+                        <h1>内黄县兴农果树栽培有限公司</h1>
+                        <p>专业果树栽培与农业技术服务</p>
+                    </div>
+                </div>
+                <nav id="main-nav">
+                    <ul>
+                        <li><a href="/">首页</a></li>
+                        <li><a href="#about">关于我们</a></li>
+                        <li><a href="/a/productions/index.html" class="active">产品展示</a></li>
+                        <li><a href="#news">学习中心</a></li>
+                        <li><a href="#services">领导关怀</a></li>
+                        <li><a href="#contact">媒体中心</a></li>
+                    </ul>
+                </nav>
+                <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+            </div>
+        </div>
+    </header>
+    <div class="liner"></div>
+
+    <!-- 主内容区域 -->
+    <main class="main-content">
+        <div class="container">
+            <!-- 这里可以放置您的具体内容 -->
+            <h2>欢迎来到内黄县兴农果树栽培有限公司</h2>
+            <p>这里可以添加您的具体页面内容...</p>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>关于我们</h3>
+                    <ul class="footer-links">
+                        <li><a href="#about">公司简介</a></li>
+                        <!-- <li><a href="#">发展历程</a></li> -->
+                        <li><a href="#">荣誉资质</a></li>
+                        <li><a href="#">企业文化</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>产品中心</h3>
+                    <ul class="footer-links">
+                        <li><a href="/a/productions/maotao.html">甜毛桃</a></li>
+                        <li><a href="/a/productions/youpan.html">油蟠桃</a></li>
+                        <li><a href="/a/productions/youtao.html">油桃</a></li>
+                        <li><a href="/a/productions/maopan.html">毛蟠桃</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>学习中心</h3>
+                    <ul class="footer-links">
+                        <li><a href="#services">在线学习</a></li>
+                        <li><a href="#services">培训交流</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>媒体中心</h3>
+                    <ul class="footer-links">
+                        <li><a href="#contact">视频采访</a></li>
+                        <li><a href="#contact">媒体报道</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>版权所有 © <span id="year"></span> 内黄县兴农果树栽培有限公司 <a target="_blank" style="color: #fff;"
+                        href="https://beian.miit.gov.cn/">豫ICP备17041640号</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 显示当前年份
+        document.getElementById('year').innerText = new Date().getFullYear();
+
+        // 移动端菜单切换
+        document.addEventListener('DOMContentLoaded', function () {
+            const mobileMenuBtn = document.querySelector('#mobile-menu-btn');
+            const nav = document.querySelector('#main-nav');
+
+            mobileMenuBtn.addEventListener('click', () => {
+                nav.classList.toggle('active');
+            });
+
+            // 导航链接高亮
+            const navLinks = document.querySelectorAll('nav a');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    // 移除所有active类
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    // 为当前点击的链接添加active类
+                    this.classList.add('active');
+
+                    // 移动端点击后关闭菜单
+                    if (window.innerWidth <= 768) {
+                        nav.classList.remove('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

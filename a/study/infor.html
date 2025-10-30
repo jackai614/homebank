@@ -90,6 +90,10 @@
             height: 100%;
         }
 
+        .hide {
+            display: none;
+        }
+
         .logo-text h1 {
             font-size: 24px;
             color: var(--primary-dark);
@@ -224,6 +228,25 @@
             margin: 10px 0;
         }
 
+        #article p.ql-align-center,
+        #article p[style="text-align:center;"],
+        #article p[align="center"] {
+            height: 300px;
+            overflow: hidden;
+            margin: 6px auto;
+            text-align: center;
+        }
+
+        #article p {
+            line-height: 30px;
+            position: relative;
+        }
+
+        #article img {
+            position: relative;
+            top: -45px;
+        }
+
         /* 响应式设计 */
         @media (max-width: 768px) {
             .header-main {
@@ -328,9 +351,9 @@
                 <nav id="main-nav">
                     <ul>
                         <li><a href="/">首页</a></li>
-                        <li><a href="#about">关于我们</a></li>
-                        <li><a href="/a/productions/index.html" class="active">产品展示</a></li>
-                        <li><a href="#news">学习中心</a></li>
+                        <li><a href="/a/about/">关于我们</a></li>
+                        <li><a href="/a/productions/index.html">产品展示</a></li>
+                        <li><a href="/a/study/" class="active">学习中心</a></li>
                         <li><a href="#services">领导关怀</a></li>
                         <li><a href="#contact">媒体中心</a></li>
                     </ul>
@@ -344,9 +367,7 @@
     <!-- 主内容区域 -->
     <main class="main-content">
         <div class="container">
-            <!-- 这里可以放置您的具体内容 -->
-            <h2>欢迎来到内黄县兴农果树栽培有限公司</h2>
-            <p>这里可以添加您的具体页面内容...</p>
+            <div id="article"></div>
         </div>
     </main>
 
@@ -357,10 +378,10 @@
                 <div class="footer-column">
                     <h3>关于我们</h3>
                     <ul class="footer-links">
-                        <li><a href="#about">公司简介</a></li>
+                        <li><a href="/a/about/">公司简介</a></li>
                         <!-- <li><a href="#">发展历程</a></li> -->
-                        <li><a href="#">荣誉资质</a></li>
-                        <li><a href="#">企业文化</a></li>
+                        <li><a href="/a/about/?tab=honors">荣誉资质</a></li>
+                        <li><a href="/a/about/?tab=culture">企业文化</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -375,8 +396,8 @@
                 <div class="footer-column">
                     <h3>学习中心</h3>
                     <ul class="footer-links">
-                        <li><a href="#services">在线学习</a></li>
-                        <li><a href="#services">培训交流</a></li>
+                        <li><a href="/a/study/">在线学习</a></li>
+                        <!-- <li><a href="#services">培训交流</a></li> -->
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -393,11 +414,38 @@
             </div>
         </div>
     </footer>
-
+    <script src="./study.js"></script>
     <script>
         // 显示当前年份
         document.getElementById('year').innerText = new Date().getFullYear();
+        //展示内容区域
+        function getUrlParam(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+        //提取字符串中图片的URL
+        function extractImageSrcs(htmlString) {
+            const imgSrcRegex = /<img[^>]*src=(['"])?([^'"]+)\1[^>]*>/g;
+            const srcs = [];
 
+            let match;
+            while ((match = imgSrcRegex.exec(htmlString))) {
+                srcs.push(match[2]);
+            }
+
+            return srcs;
+        }
+        if (getUrlParam('id')) {
+            let id = Number(getUrlParam('id'));
+            let contentStr = study.filter((item) => {
+                return item.id === id;
+            })[0].content;
+            let urls = extractImageSrcs(contentStr);
+            urls.forEach((url) => {
+                contentStr = contentStr.replace(url, 'http://www.nhxgsxh.com/imageProxy.php?url=' + url)
+            })
+            document.getElementById('article').innerHTML = contentStr;
+        }
         // 移动端菜单切换
         document.addEventListener('DOMContentLoaded', function () {
             const mobileMenuBtn = document.querySelector('#mobile-menu-btn');

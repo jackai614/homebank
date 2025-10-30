@@ -311,10 +311,13 @@
         }
 
         .article-image img {
-            width: 115%;
-            height: 115%;
+            width: 140%;
+            height: 140%;
             object-fit: cover;
             transition: var(--transition);
+            position: relative;
+            top: -20%;
+            left: -20%;
         }
 
         .article-card:hover .article-image img {
@@ -979,8 +982,8 @@
             requestIdleCallback(() => {
                 // 预加载下一页可能用到的资源
                 const preloadLinks = [
-                    '/images/articles/next-page-1.jpg',
-                    '/images/articles/next-page-2.jpg'
+                    '/images/yuanqu/ms.jpg',
+                    '/images/yuanqu/ms1.jpg'
                 ];
 
                 preloadLinks.forEach(url => {

@@ -485,7 +485,7 @@
             <div class="header-main">
                 <div class="logo">
                     <div class="logo-img">
-                        <img src="/images/logo.jpeg" alt="内黄县兴农果树栽培有限公司">
+                        <img class="lazy" data-src="/images/logo.jpeg" alt="内黄县兴农果树栽培有限公司">
                     </div>
                     <div class="logo-text">
                         <h1>内黄县兴农果树栽培有限公司</h1>
@@ -498,8 +498,8 @@
                         <li><a href="/a/about/">关于我们</a></li>
                         <li><a href="/a/productions/index.html" class="active">产品展示</a></li>
                         <li><a href="/a/study/">学习中心</a></li>
-                        <li><a href="#services">领导关怀</a></li>
-                        <li><a href="#contact">媒体中心</a></li>
+                        <li><a href="/a/leader/">领导关怀</a></li>
+                        <li><a href="/a/media/">媒体中心</a></li>
                     </ul>
                 </nav>
                 <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
@@ -534,7 +534,8 @@
                 <div class="products-grid" id="productsContainer">
                     <div class="product-card"
                         title="中蟠11号平均单果重250克，大果300克以上; 果皮有毛，底色黄，果面80%以上着鲜红色晕，十分美观，皮不能剥离;果肉橙黄色，肉质为硬溶质,耐贮运;纤维中等;果实风味浓甜,有香味，可溶性固形物含量15%。粘核,在河南省内黄县，7月中下旬成熟。">
-                        <div class="product-image"> <img src="/images/fruits/tao/tao10.jpg" alt="中蟠11号"> </div>
+                        <div class="product-image"> <img class="lazy" data-src="/images/fruits/tao/tao10.jpg"
+                                alt="中蟠11号"> </div>
                         <div class="product-content">
                             <h3 class="product-title">中蟠11号</h3>
                             <p class="product-description">
@@ -545,7 +546,8 @@
                     </div>
                     <div class="product-card"
                         title="中蟠13号—黄肉蟠桃，7月上旬成熟，果皮75%着红色、茸毛短、干净、漂亮，似水洗一般，果实大、均匀，果顶平、果肉厚、细腻、不撕皮，单果重180克，风味浓甜、香，极丰产，综合性状很好，适宜规模化发展。">
-                        <div class="product-image"> <img src="/images/fruits/tao/tao11.jpg" alt="中蟠13号"> </div>
+                        <div class="product-image"> <img class="lazy" data-src="/images/fruits/tao/tao11.jpg"
+                                alt="中蟠13号"> </div>
                         <div class="product-content">
                             <h3 class="product-title">中蟠13号</h3>
                             <p class="product-description">
@@ -590,8 +592,8 @@
                 <div class="footer-column">
                     <h3>媒体中心</h3>
                     <ul class="footer-links">
-                        <li><a href="#contact">视频采访</a></li>
-                        <li><a href="#contact">媒体报道</a></li>
+                        <li><a href="/a/media/?id=vedio">视频采访</a></li>
+                        <li><a href="/a/media/?id=article">媒体报道</a></li>
                     </ul>
                 </div>
             </div>
@@ -653,6 +655,36 @@
                     }
                 });
             });
+            // 图片懒加载功能
+            const lazyImages = document.querySelectorAll('img.lazy');
+
+            // 检查浏览器是否支持IntersectionObserver
+            if ('IntersectionObserver' in window) {
+                const imageObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            img.src = img.dataset.src;
+                            img.classList.remove('lazy');
+                            img.classList.add('loaded');
+                            imageObserver.unobserve(img);
+                        }
+                    });
+                }, {
+                    rootMargin: '0px 0px 100px 0px' // 提前100px开始加载
+                });
+
+                lazyImages.forEach(img => {
+                    imageObserver.observe(img);
+                });
+            } else {
+                // 不支持IntersectionObserver的浏览器回退方案
+                lazyImages.forEach(img => {
+                    img.src = img.dataset.src;
+                    img.classList.remove('lazy');
+                    img.classList.add('loaded');
+                });
+            }
         });
     </script>
 </body>

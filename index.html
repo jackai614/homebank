@@ -44,6 +44,25 @@
             padding: 0 15px;
         }
 
+        /* 图片懒加载相关样式 */
+        .lazy-image {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .lazy-image.loaded {
+            opacity: 1;
+        }
+        
+        section:not(#home).lazy-bg {
+            background-image: none !important;
+            transition: background-image 0.3s ease;
+        }
+        
+        section:not(#home) .lazy-bg.loaded {
+            background-image: inherit !important;
+        }
+
         /* 头部样式 */
         .header-top {
             background: var(--primary-dark);
@@ -141,7 +160,6 @@
             position: relative;
             height: 666px;
             overflow: hidden;
-            /* margin-bottom: 30px; */
         }
 
         #home {
@@ -170,7 +188,6 @@
             left: 0;
             width: 100%;
             height: 100%;
-            /* background: rgba(0, 0, 0, 0.4); */
         }
 
         .hero-content {
@@ -705,7 +722,7 @@
             <div class="header-main">
                 <div class="logo">
                     <div class="logo-img">
-                        <img src="/images/logo.jpeg" alt="">
+                        <img src="/images/logo.jpeg" alt="公司logo" class="lazy-image" data-src="/images/logo.jpeg">
                     </div>
                     <div class="logo-text">
                         <h1>内黄县兴农果树栽培有限公司</h1>
@@ -729,17 +746,17 @@
 
     <!-- 轮播图 -->
     <section class="hero" id="home">
-        <div class="hero-slide active" style="background-image: url('/images/banner1.jpg');">
+        <div class="hero-slide active lazy-bg" data-bg="/images/banner1.jpg">
             <div class="hero-overlay"></div>
             <div class="hero-content">
             </div>
         </div>
-        <div class="hero-slide" style="background-image: url('/images/banner2.jpg');">
+        <div class="hero-slide lazy-bg" data-bg="/images/banner2.jpg">
             <div class="hero-overlay"></div>
             <div class="hero-content">
             </div>
         </div>
-        <div class="hero-slide" style="background-image: url('/images/banner3.jpg');">
+        <div class="hero-slide lazy-bg" data-bg="/images/banner3.jpg">
             <div class="hero-overlay"></div>
             <div class="hero-content">
             </div>
@@ -760,10 +777,13 @@
                     <p>内黄县兴农果树栽培有限公司成立于2005年，位于河南省安阳市内黄县，公司专注于果树苗木的繁育、栽培技术研究与推广，是河南省农业产业化重点龙头企业。</p>
                     <p>公司拥有标准化苗木繁育基地500余亩，年产优质果树苗木200多万株，品种包括普通桃、油桃、毛蟠桃、油蟠桃、黄桃系列等210多个品种。</p>
                     <p>我们与中国农科院郑州果树研究所、安阳工学院等多家科研院所建立长期合作关系，不断引进和培育新品种，推广新技术，为果农提供全方位的技术服务。</p>
-                    <a href="#contact" class="btn">了解更多</a>
+                    <a href="/a/about/index.html" class="btn">了解更多</a>
                 </div>
                 <div class="about-image">
-                    <img src="/images/yuanqu/banner3.jpg" alt="公司基地">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'%3E%3Crect width='600' height='400' fill='%23f0f0f0'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='18' fill='%23999'%3E正在加载图片...%3C/text%3E%3C/svg%3E" 
+                         alt="公司基地" 
+                         class="lazy-image" 
+                         data-src="/images/yuanqu/banner3.jpg">
                 </div>
             </div>
         </div>
@@ -779,7 +799,10 @@
             <div class="products-grid">
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="/images/fruits/tao/tao1.jpg" alt="兴农红2号">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='200' viewBox='0 0 280 200'%3E%3Crect width='280' height='200' fill='%23f0f0f0'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='14' fill='%23999'%3E正在加载图片...%3C/text%3E%3C/svg%3E" 
+                             alt="兴农红2号" 
+                             class="lazy-image" 
+                             data-src="/images/fruits/tao/tao1.jpg">
                     </div>
                     <div class="product-info">
                         <h3>兴农红2号</h3>
@@ -789,7 +812,10 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="/images/fruits/tao/yp7.jpeg" alt="中油蟠7号">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='200' viewBox='0 0 280 200'%3E%3Crect width='280' height='200' fill='%23f0f0f0'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='14' fill='%23999'%3E正在加载图片...%3C/text%3E%3C/svg%3E" 
+                             alt="中油蟠7号" 
+                             class="lazy-image" 
+                             data-src="/images/fruits/tao/yp7.jpeg">
                     </div>
                     <div class="product-info">
                         <h3>中油蟠7号</h3>
@@ -799,7 +825,10 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="/images/fruits/tao/yp9.jpeg" alt="中油蟠9号">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='200' viewBox='0 0 280 200'%3E%3Crect width='280' height='200' fill='%23f0f0f0'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='14' fill='%23999'%3E正在加载图片...%3C/text%3E%3C/svg%3E" 
+                             alt="中油蟠9号" 
+                             class="lazy-image" 
+                             data-src="/images/fruits/tao/yp9.jpeg">
                     </div>
                     <div class="product-info">
                         <h3>中油蟠9号</h3>
@@ -809,7 +838,10 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="/images/fruits/tao/yp13.jpg" alt="中油蟠13号">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='200' viewBox='0 0 280 200'%3E%3Crect width='280' height='200' fill='%23f0f0f0'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='14' fill='%23999'%3E正在加载图片...%3C/text%3E%3C/svg%3E" 
+                             alt="中油蟠13号" 
+                             class="lazy-image" 
+                             data-src="/images/fruits/tao/yp13.jpg">
                     </div>
                     <div class="product-info">
                         <h3>中油蟠13号</h3>
@@ -819,7 +851,10 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="/images/fruits/tao/yp8.jpeg" alt="中油蟠8号">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='200' viewBox='0 0 280 200'%3E%3Crect width='280' height='200' fill='%23f0f0f0'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='14' fill='%23999'%3E正在加载图片...%3C/text%3E%3C/svg%3E" 
+                             alt="中油蟠8号" 
+                             class="lazy-image" 
+                             data-src="/images/fruits/tao/yp8.jpeg">
                     </div>
                     <div class="product-info">
                         <h3>中油蟠8号</h3>
@@ -829,7 +864,10 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="/images/fruits/tao/yy4.jpeg" alt="中桃颜玉4号">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='200' viewBox='0 0 280 200'%3E%3Crect width='280' height='200' fill='%23f0f0f0'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='14' fill='%23999'%3E正在加载图片...%3C/text%3E%3C/svg%3E" 
+                             alt="中桃颜玉4号" 
+                             class="lazy-image" 
+                             data-src="/images/fruits/tao/yy4.jpeg">
                     </div>
                     <div class="product-info">
                         <h3>中桃颜玉4号</h3>
@@ -851,7 +889,10 @@
             <div class="news-grid">
                 <div class="news-card">
                     <div class="news-image">
-                        <img src="/images/honor/02.jpg" alt="技术培训">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='350' height='290' viewBox='0 0 350 290'%3E%3Crect width='350' height='290' fill='%23f0f0f0'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='14' fill='%23999'%3E正在加载图片...%3C/text%3E%3C/svg%3E" 
+                             alt="技术培训" 
+                             class="lazy-image" 
+                             data-src="/images/honor/02.jpg">
                     </div>
                     <div class="news-content">
                         <div class="news-date">2008-12</div>
@@ -860,7 +901,10 @@
                 </div>
                 <div class="news-card">
                     <div class="news-image">
-                        <img src="/images/honor/13.jpg" alt="新品种">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='350' height='290' viewBox='0 0 350 290'%3E%3Crect width='350' height='290' fill='%23f0f0f0'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='14' fill='%23999'%3E正在加载图片...%3C/text%3E%3C/svg%3E" 
+                             alt="新品种" 
+                             class="lazy-image" 
+                             data-src="/images/honor/13.jpg">
                     </div>
                     <div class="news-content">
                         <div class="news-date">2015-05</div>
@@ -869,7 +913,10 @@
                 </div>
                 <div class="news-card">
                     <div class="news-image">
-                        <img src="/images/honor/012.jpg" alt="丰收">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='350' height='290' viewBox='0 0 350 290'%3E%3Crect width='350' height='290' fill='%23f0f0f0'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='14' fill='%23999'%3E正在加载图片...%3C/text%3E%3C/svg%3E" 
+                             alt="丰收" 
+                             class="lazy-image" 
+                             data-src="/images/honor/012.jpg">
                     </div>
                     <div class="news-content">
                         <div class="news-date">2014-12</div>
@@ -934,13 +981,16 @@
                     <div class="map">
                         <div id="map"
                             style="width: 100%; height: 188px; background-color: #f0f0f0; display: flex; align-items: center; justify-content: center; border-radius: 8px;">
-                            <!-- <p>地图位置</p> -->
                         </div>
                     </div>
                 </div>
                 <div class="contact-form">
                     <h3>现场交流会</h3>
-                    <img src="/images/yuanqu/banner1.jpg" alt="内黄县兴农果树栽培有限公司总经理" style="width: 100%;">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'%3E%3Crect width='600' height='400' fill='%23f0f0f0'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='18' fill='%23999'%3E正在加载图片...%3C/text%3E%3C/svg%3E" 
+                         alt="内黄县兴农果树栽培有限公司总经理" 
+                         class="lazy-image" 
+                         data-src="/images/yuanqu/banner1.jpg" 
+                         style="width: 100%;">
                 </div>
             </div>
         </div>
@@ -954,7 +1004,6 @@
                     <h3>关于我们</h3>
                     <ul class="footer-links">
                         <li><a href="/a/about/">公司简介</a></li>
-                        <!-- <li><a href="#">发展历程</a></li> -->
                         <li><a href="/a/about/?tab=honors">荣誉资质</a></li>
                         <li><a href="/a/about/?tab=culture">企业文化</a></li>
                     </ul>
@@ -972,7 +1021,6 @@
                     <h3>学习中心</h3>
                     <ul class="footer-links">
                         <li><a href="/a/study/">在线学习</a></li>
-                        <!-- <li><a href="#services">培训交流</a></li> -->
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -991,10 +1039,67 @@
     </footer>
 
     <script>
-        //展示今年的年份
-        document.getElementById('year').innerText = new Date().getFullYear();
-        // 轮播图功能
-        document.addEventListener('DOMContentLoaded', function () {
+        // 图片懒加载功能
+        document.addEventListener('DOMContentLoaded', function() {
+            // 懒加载图片元素
+            const lazyImages = document.querySelectorAll('.lazy-image');
+            const lazyBackgrounds = document.querySelectorAll('.lazy-bg');
+            
+            // 图片懒加载观察器
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        if (img.dataset.src) {
+                            img.src = img.dataset.src;
+                            img.classList.add('loaded');
+                            imageObserver.unobserve(img);
+                        }
+                    }
+                });
+            }, {
+                rootMargin: '50px', // 提前50px开始加载
+                threshold: 0.1
+            });
+            
+            // 背景图懒加载观察器
+            const bgObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const element = entry.target;
+                        if (element.dataset.bg) {
+                            element.style.backgroundImage = `url('${element.dataset.bg}')`;
+                            element.classList.add('loaded');
+                            bgObserver.unobserve(element);
+                        }
+                    }
+                });
+            }, {
+                rootMargin: '50px',
+                threshold: 0.1
+            });
+            
+            // 开始观察所有懒加载图片
+            lazyImages.forEach(img => {
+                imageObserver.observe(img);
+            });
+            
+            // 开始观察所有懒加载背景
+            lazyBackgrounds.forEach(bg => {
+                bgObserver.observe(bg);
+            });
+            
+            // 立即加载首屏轮播图的第一张
+            const firstSlide = document.querySelector('.hero-slide.active');
+            if (firstSlide && firstSlide.dataset.bg) {
+                firstSlide.style.backgroundImage = `url('${firstSlide.dataset.bg}')`;
+                firstSlide.classList.add('loaded');
+            }
+            
+            //展示今年的年份
+            document.getElementById('year').innerText = new Date().getFullYear();
+            
+            // 轮播图功能
             const slides = document.querySelectorAll('.hero-slide');
             const dots = document.querySelectorAll('.hero-dot');
             let currentSlide = 0;
@@ -1008,6 +1113,13 @@
 
                 slides[currentSlide].classList.add('active');
                 dots[currentSlide].classList.add('active');
+                
+                // 懒加载当前显示的轮播图背景
+                const currentSlideElement = slides[currentSlide];
+                if (currentSlideElement.dataset.bg && !currentSlideElement.classList.contains('loaded')) {
+                    currentSlideElement.style.backgroundImage = `url('${currentSlideElement.dataset.bg}')`;
+                    currentSlideElement.classList.add('loaded');
+                }
             }
 
             // 自动轮播
@@ -1068,8 +1180,6 @@
             // 平滑滚动
             navLinks.forEach(link => {
                 link.addEventListener('click', function (e) {
-                    // e.preventDefault();
-
                     const targetId = this.getAttribute('href');
                     const targetSection = document.querySelector(targetId);
 

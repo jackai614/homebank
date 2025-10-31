@@ -47,6 +47,27 @@
             padding: 0 20px;
         }
 
+        /* 图片懒加载样式 */
+        .lazy-image {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            background-color: #f5f5f5;
+        }
+        
+        .lazy-image.loaded {
+            opacity: 1;
+        }
+        
+        .lazy-bg {
+            background-image: none !important;
+            background-color: #f5f5f5;
+        }
+        
+        .lazy-bg.loaded {
+            background-image: inherit !important;
+            background-color: transparent;
+        }
+
         /* 头部样式 */
         .header-top {
             background: var(--primary-dark);
@@ -639,7 +660,10 @@
             <div class="header-main">
                 <div class="logo">
                     <div class="logo-img">
-                        <img src="/images/logo.jpeg" alt="内黄县兴农果树栽培有限公司">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Crect width='80' height='80' fill='%232e7d32'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='14' fill='white'%3E公司Logo%3C/text%3E%3C/svg%3E" 
+                             alt="内黄县兴农果树栽培有限公司" 
+                             class="lazy-image" 
+                             data-src="/images/logo.jpeg">
                     </div>
                     <div class="logo-text">
                         <h1>内黄县兴农果树栽培有限公司</h1>
@@ -675,9 +699,6 @@
                         <a href="?tab=company" class="nav-item active" data-tab="company">
                             <i class="fas fa-building"></i>公司简介
                         </a>
-                        <!-- <a href="?tab=history" class="nav-item" data-tab="history">
-                            <i class="fas fa-history"></i>发展历程
-                        </a> -->
                         <a href="?tab=honors" class="nav-item" data-tab="honors">
                             <i class="fas fa-award"></i>荣誉资质
                         </a>
@@ -712,10 +733,16 @@
                         </div>
                         <p>公司始终坚持"科技兴农、质量为本"的经营理念，与多家科研院所建立长期合作关系，不断引进和培育新品种，推广先进的栽培技术，为果农提供全方位的技术服务支持。</p>
                         <p class="imgs">
-                            <img src="/images/yuanqu/ms1.jpg" alt="内黄县兴农果树栽培有限公司">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'%3E%3Crect width='600' height='400' fill='%23f5f5f5'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='16' fill='%23999'%3E正在加载图片...%3C/text%3E%3C/svg%3E" 
+                                 alt="内黄县兴农果树栽培有限公司" 
+                                 class="lazy-image" 
+                                 data-src="/images/yuanqu/ms1.jpg">
                         </p>
                         <p class="imgs">
-                            <img src="/images/yuanqu/ms.jpg" alt="内黄县兴农果树栽培有限公司">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'%3E%3Crect width='600' height='400' fill='%23f5f5f5'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='16' fill='%23999'%3E正在加载图片...%3C/text%3E%3C/svg%3E" 
+                                 alt="内黄县兴农果树栽培有限公司" 
+                                 class="lazy-image" 
+                                 data-src="/images/yuanqu/ms.jpg">
                         </p>
                     </div>
 
@@ -771,58 +798,76 @@
                         <h2>荣誉资质</h2>
                         <div class="awards-grid">
                             <div class="award-item">
-                                <img src="/images/honor/02.jpg" alt="">
-                                <!-- <div class="award-icon">🏆</div>
-                                <h3>河南省林业产业化重点龙头企业</h3>
-                                <p>2015年获得认定，持续保持行业领先地位</p> -->
+                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='200' viewBox='0 0 250 200'%3E%3Crect width='250' height='200' fill='%23f5f5f5'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='14' fill='%23999'%3E正在加载图片...%3C/text%3E%3C/svg%3E" 
+                                     alt="荣誉资质" 
+                                     class="lazy-image" 
+                                     data-src="/images/honor/02.jpg">
                             </div>
                             <div class="award-item">
-                                <img src="/images/honor/04.jpg" alt="">
-                                <!-- <div class="award-icon">⭐</div>
-                                <h3>农业科技创新示范单位</h3>
-                                <p>在果树育种和技术创新方面获得多项荣誉</p> -->
+                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='200' viewBox='0 0 250 200'%3E%3Crect width='250' height='200' fill='%23f5f5f5'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='14' fill='%23999'%3E正在加载图片...%3C/text%3E%3C/svg%3E" 
+                                     alt="荣誉资质" 
+                                     class="lazy-image" 
+                                     data-src="/images/honor/04.jpg">
                             </div>
                             <div class="award-item">
-                                <img src="/images/honor/03.jpg" alt="">
-                                <!-- <div class="award-icon">📜</div>
-                                <h3>ISO9001质量管理体系认证</h3>
-                                <p>建立完善的质量管理体系，确保产品质量</p> -->
+                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='200' viewBox='0 0 250 200'%3E%3Crect width='250' height='200' fill='%23f5f5f5'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='14' fill='%23999'%3E正在加载图片...%3C/text%3E%3C/svg%3E" 
+                                     alt="荣誉资质" 
+                                     class="lazy-image" 
+                                     data-src="/images/honor/03.jpg">
                             </div>
                             <div class="award-item">
-                                <img src="/images/honor/2.jpg" alt="">
-                                <!-- <div class="award-icon">🌱</div>
-                                <h3>绿色食品生产基地认证</h3>
-                                <p>严格按照绿色标准进行生产和管理</p> -->
+                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='200' viewBox='0 0 250 200'%3E%3Crect width='250' height='200' fill='%23f5f5f5'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='14' fill='%23999'%3E正在加载图片...%3C/text%3E%3C/svg%3E" 
+                                     alt="荣誉资质" 
+                                     class="lazy-image" 
+                                     data-src="/images/honor/2.jpg">
                             </div>
                             <div class="award-item">
-                                <img src="/images/honor/1.jpg" alt="">
-                                <!-- <div class="award-icon">🤝</div>
-                                <h3>优秀农业产业化企业</h3>
-                                <p>多次获得地方政府和行业协会表彰</p> -->
+                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='200' viewBox='0 0 250 200'%3E%3Crect width='250' height='200' fill='%23f5f5f5'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='14' fill='%23999'%3E正在加载图片...%3C/text%3E%3C/svg%3E" 
+                                     alt="荣誉资质" 
+                                     class="lazy-image" 
+                                     data-src="/images/honor/1.jpg">
                             </div>
                             <div class="award-item">
-                                <img src="/images/honor/3.jpg" alt="">
-                                <!-- <div class="award-icon">💡</div>
-                                <h3>技术创新专利证书</h3>
-                                <p>拥有多项果树栽培和育种技术专利</p> -->
+                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='200' viewBox='0 0 250 200'%3E%3Crect width='250' height='200' fill='%23f5f5f5'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='14' fill='%23999'%3E正在加载图片...%3C/text%3E%3C/svg%3E" 
+                                     alt="荣誉资质" 
+                                     class="lazy-image" 
+                                     data-src="/images/honor/3.jpg">
                             </div>
                             <div class="award-item">
-                                <img src="/images/honor/05.jpg" alt="">
+                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='200' viewBox='0 0 250 200'%3E%3Crect width='250' height='200' fill='%23f5f5f5'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='14' fill='%23999'%3E正在加载图片...%3C/text%3E%3C/svg%3E" 
+                                     alt="荣誉资质" 
+                                     class="lazy-image" 
+                                     data-src="/images/honor/05.jpg">
                             </div>
                             <div class="award-item">
-                                <img src="/images/honor/012.jpg" alt="">
+                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='200' viewBox='0 0 250 200'%3E%3Crect width='250' height='200' fill='%23f5f5f5'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='14' fill='%23999'%3E正在加载图片...%3C/text%3E%3C/svg%3E" 
+                                     alt="荣誉资质" 
+                                     class="lazy-image" 
+                                     data-src="/images/honor/012.jpg">
                             </div>
                             <div class="award-item">
-                                <img src="/images/honor/09.jpg" alt="">
+                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='200' viewBox='0 0 250 200'%3E%3Crect width='250' height='200' fill='%23f5f5f5'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='14' fill='%23999'%3E正在加载图片...%3C/text%3E%3C/svg%3E" 
+                                     alt="荣誉资质" 
+                                     class="lazy-image" 
+                                     data-src="/images/honor/09.jpg">
                             </div>
                             <div class="award-item">
-                                <img src="/images/honor/13.jpg" alt="">
+                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='200' viewBox='0 0 250 200'%3E%3Crect width='250' height='200' fill='%23f5f5f5'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='14' fill='%23999'%3E正在加载图片...%3C/text%3E%3C/svg%3E" 
+                                     alt="荣誉资质" 
+                                     class="lazy-image" 
+                                     data-src="/images/honor/13.jpg">
                             </div>
                             <div class="award-item">
-                                <img src="/images/honor/06.jpg" alt="">
+                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='200' viewBox='0 0 250 200'%3E%3Crect width='250' height='200' fill='%23f5f5f5'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='14' fill='%23999'%3E正在加载图片...%3C/text%3E%3C/svg%3E" 
+                                     alt="荣誉资质" 
+                                     class="lazy-image" 
+                                     data-src="/images/honor/06.jpg">
                             </div>
                             <div class="award-item">
-                                <img src="/images/honor/010.jpg" alt="">
+                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='200' viewBox='0 0 250 200'%3E%3Crect width='250' height='200' fill='%23f5f5f5'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='14' fill='%23999'%3E正在加载图片...%3C/text%3E%3C/svg%3E" 
+                                     alt="荣誉资质" 
+                                     class="lazy-image" 
+                                     data-src="/images/honor/010.jpg">
                             </div>
                         </div>
                     </div>
@@ -871,7 +916,6 @@
                     <h3>关于我们</h3>
                     <ul class="footer-links">
                         <li><a href="/a/about/?tab=company">公司简介</a></li>
-                        <!-- <li><a href="/a/about/?tab=history">发展历程</a></li> -->
                         <li><a href="/a/about/?tab=honors">荣誉资质</a></li>
                         <li><a href="/a/about/?tab=culture">企业文化</a></li>
                     </ul>
@@ -889,7 +933,6 @@
                     <h3>学习中心</h3>
                     <ul class="footer-links">
                         <li><a href="/a/study/">在线学习</a></li>
-                        <!-- <li><a href="#services">培训交流</a></li> -->
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -908,17 +951,53 @@
     </footer>
 
     <script>
-        // 显示当前年份
-        document.getElementById('year').innerText = new Date().getFullYear();
+        // 图片懒加载功能
+        document.addEventListener('DOMContentLoaded', function() {
+            // 显示当前年份
+            document.getElementById('year').innerText = new Date().getFullYear();
 
-        // URL参数处理函数
-        function getUrlParam(name) {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(name);
-        }
+            // 懒加载图片元素
+            const lazyImages = document.querySelectorAll('.lazy-image');
+            
+            // 图片懒加载观察器
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        if (img.dataset.src) {
+                            // 创建新的Image对象预加载
+                            const tempImg = new Image();
+                            tempImg.onload = function() {
+                                img.src = img.dataset.src;
+                                img.classList.add('loaded');
+                                imageObserver.unobserve(img);
+                            };
+                            tempImg.onerror = function() {
+                                // 如果图片加载失败，移除懒加载类
+                                img.classList.add('loaded');
+                                imageObserver.unobserve(img);
+                            };
+                            tempImg.src = img.dataset.src;
+                        }
+                    }
+                });
+            }, {
+                rootMargin: '50px', // 提前50px开始加载
+                threshold: 0.1
+            });
+            
+            // 开始观察所有懒加载图片
+            lazyImages.forEach(img => {
+                imageObserver.observe(img);
+            });
 
-        // 移动端菜单切换
-        document.addEventListener('DOMContentLoaded', function () {
+            // URL参数处理函数
+            function getUrlParam(name) {
+                const urlParams = new URLSearchParams(window.location.search);
+                return urlParams.get(name);
+            }
+
+            // 移动端菜单切换
             const mobileMenuBtn = document.querySelector('#mobile-menu-btn');
             const nav = document.querySelector('#main-nav');
 
@@ -941,6 +1020,7 @@
             // 左侧导航切换功能
             const sidebarNavItems = document.querySelectorAll('.sidebar-nav .nav-item');
             const tabContents = document.querySelectorAll('.tab-content');
+            
             // 根据URL参数初始化tab
             function initializeTabFromUrl() {
                 const tabParam = getUrlParam('tab');
@@ -984,6 +1064,7 @@
                     // 更新URL参数而不刷新页面
                     const newUrl = window.location.pathname + `?tab=${tab}`;
                     window.history.pushState({}, '', newUrl);
+                    
                     // 移除所有active类
                     sidebarNavItems.forEach(nav => nav.classList.remove('active'));
                     tabContents.forEach(content => content.classList.remove('active'));

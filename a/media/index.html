@@ -671,46 +671,46 @@
                 <div class="tab-content active" id="video-content">
                     <div class="media-grid">
                         <!-- 视频卡片1 -->
-                        <div class="media-card video-card" data-video="https://example.com/video1.mp4">
+                        <div class="media-card video-card" data-video="https://tv.cctv.com/2019/04/22/VIDEEY2JwGb9A83b3e34XxZY190422.shtml">
                             <div class="video-thumbnail">
-                                <img src="https://via.placeholder.com/400x200/4CAF50/ffffff?text=合作社采访视频1" alt="合作社发展历程采访">
+                                <img src="/images/media/cctv7.png" alt="CCTV7走进哥仨合作社">
                                 <div class="play-btn">
                                     <i class="fas fa-play"></i>
                                 </div>
                             </div>
                             <div class="media-info">
-                                <h3 class="media-title">合作社发展历程与技术创新专访</h3>
+                                <h3 class="media-title">宝塔形身材让桃树早丰产</h3>
                                 <div class="media-meta">
                                     <span class="media-date">
-                                        <i class="far fa-calendar"></i> 2024-03-15
+                                        <i class="far fa-calendar"></i> 2019-04-22
                                     </span>
-                                    <span class="media-source">河南电视台</span>
+                                    <span class="media-source">中央电视台</span>
                                 </div>
                                 <p class="media-description">
-                                    详细介绍了合作社从2005年成立至今的发展历程，以及在果树栽培技术方面的创新成果。
+                                    哥仨合作社理事长晁顺波老师在田间地头现场给种植户讲解了一种桃树宝塔形树形以及这种树形的优点和修剪方法，来帮助农户解决实际问题。
                                 </p>
-                                <a href="#" class="read-more">观看视频 <i class="fas fa-arrow-right"></i></a>
+                                <a href="https://tv.cctv.com/2019/04/22/VIDEEY2JwGb9A83b3e34XxZY190422.shtml" target="_blank" class="read-more">观看视频 <i class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
 
                         <!-- 视频卡片2 -->
-                        <div class="media-card video-card" data-video="https://example.com/video2.mp4">
+                        <div class="media-card video-card" data-video="https://tv.cctv.com/2018/10/21/VIDEK2GMqsmgAZAnmmqEyDQM181021.shtml">
                             <div class="video-thumbnail">
-                                <img src="https://via.placeholder.com/400x200/2E7D32/ffffff?text=新品种展示" alt="新品种桃苗展示">
+                                <img src="/images/media/CCTV.png" alt="CCTV7小桃子大作为">
                                 <div class="play-btn">
                                     <i class="fas fa-play"></i>
                                 </div>
                             </div>
                             <div class="media-info">
-                                <h3 class="media-title">新品种桃苗培育技术与市场前景</h3>
+                                <h3 class="media-title">CCTV7农广天地栏目专访理事长晁顺波</h3>
                                 <div class="media-meta">
                                     <span class="media-date">
-                                        <i class="far fa-calendar"></i> 2024-02-28
+                                        <i class="far fa-calendar"></i> 2018-10-21
                                     </span>
-                                    <span class="media-source">农业科技频道</span>
+                                    <span class="media-source">中央电视台</span>
                                 </div>
                                 <p class="media-description">
-                                    展示合作社最新培育的抗重插桃苗品种，专家解读栽培技术要点和市场发展前景。
+                                    央视专访哥仨合作社理事长晁顺波，分享其40余年的种桃经验及“哥仨”品牌的艰辛创业路。(小桃子 大作为)
                                 </p>
                                 <a href="#" class="read-more">观看视频 <i class="fas fa-arrow-right"></i></a>
                             </div>
@@ -740,9 +740,9 @@
                         </div>
                     </div>
 
-                    <div class="load-more">
+                    <!-- <div class="load-more">
                         <button class="load-more-btn">加载更多视频</button>
-                    </div>
+                    </div> -->
                 </div>
 
                 <!-- 媒体报道内容 -->
@@ -910,8 +910,9 @@
                 card.addEventListener('click', (e) => {
                     if (!e.target.closest('.read-more')) {
                         const videoUrl = card.getAttribute('data-video');
-                        modalVideo.src = videoUrl;
-                        videoModal.classList.add('active');
+                        window.open(videoUrl)
+                        // modalVideo.src = videoUrl;
+                        // videoModal.classList.add('active');
                     }
                 });
             });

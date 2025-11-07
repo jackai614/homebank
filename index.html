@@ -1225,7 +1225,11 @@
                 const response = await fetch(apiUrl, {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'text/plain' // 百度要求请求体为纯文本[1,2](@ref)
+                        'Content-Type': 'text/plain', // 百度要求请求体为纯文本[1,2](@ref)
+                        'User-Agent': 'curl/7.12.1',
+                        'Host': 'data.zz.baidu.com',
+                        'Content-Type': 'text/plain',
+                        'Content-Length': 83
                     },
                     body: urlInput // URL列表，每行一个
                 });

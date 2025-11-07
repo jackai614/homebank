@@ -437,13 +437,16 @@
         }
         if (getUrlParam('id')) {
             let id = Number(getUrlParam('id'));
-            let contentStr = study.filter((item) => {
+            let obj = study.filter((item) => {
                 return item.id === id;
-            })[0].content;
-            let titleStr = study.filter((item) => {
-                return item.id === id;
-            })[0].title;
+            })[0];
+            let contentStr = obj.content;
+            let titleStr = obj.title;
             document.querySelector('title').innerHTML = '内黄哥仨合作社-学习中心|'+ titleStr;
+            let keyword = obj.keyword;
+            let description = obj.description;
+            document.querySelector('meta[name="keywords"]').setAttribute('content', keyword);
+            document.querySelector('meta[name="description"]').setAttribute('content', description.substr(0, 75)+'...');
             let urls = extractImageSrcs(contentStr);
             urls.forEach((url) => {
                 contentStr = contentStr.replace(url, 'http://www.nhxgsxh.com/imageProxy.php?url=' + url)

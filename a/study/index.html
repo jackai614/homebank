@@ -898,7 +898,7 @@
                 localStorage.setItem('study', JSON.stringify(allData));
                 localStorage.setItem('isUpdateData', isUpdateData);
                 getNums(study);
-                page(1)
+                page()
             }
         }
         function getNums(study) {
@@ -997,7 +997,6 @@
             document.getElementById('articles-area').innerHTML = atStr;
             lazyLoadImages();
         }
-        page()
         //搜索
         function searchF() {
             let search = document.getElementById('search-input').value;

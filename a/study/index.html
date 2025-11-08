@@ -882,8 +882,8 @@
         let bchfzData = [];
         let sfglData = [];
         let allData = [];
-         var atStr = ``;
-         // 性能优化：图片懒加载
+        var atStr = ``;
+        // 性能优化：图片懒加载
         function lazyLoadImages() {
             const lazyImages = document.querySelectorAll('.lazy-image');
 
@@ -905,6 +905,25 @@
                 imageObserver.observe(img);
             });
         }
+        //截取学习文章中的图片路径方法
+        function extractImageSrcs(htmlString) {
+            const imgSrcRegex = /<img[^>]*src=(['"])?([^'"]+)\1[^>]*>/g;
+            const srcs = [];
+
+            let match;
+            while ((match = imgSrcRegex.exec(htmlString))) {
+                srcs.push(match[2]);
+            }
+
+            return srcs;
+        }
+        function dateStr(date) {
+            let newDate = new Date(date);
+            let month = newDate.getMonth() + 1 < 10 ? '0' + Number(newDate.getMonth() + 1) : newDate.getMonth() + 1;
+            let day = newDate.getDate() < 10 ? '0' + Number(newDate.getDate()) : newDate.getDate();
+            return newDate.getFullYear() + "-" + month + "-" + day;
+        }
+
         function page() {
             atStr = ``;
             allData.forEach((item) => {
@@ -939,7 +958,7 @@
             document.getElementById('articles-area').innerHTML = atStr;
             lazyLoadImages();
         }
-         function getNums(study) {
+        function getNums(study) {
             zpjsData = study.filter((item) => {
                 return item.keyword && (item.keyword.includes('栽培技术') || item.keyword.includes('管理') || item.keyword.includes('种植技巧'));
             })
@@ -981,39 +1000,19 @@
 
     </script>
     <script>
-        
-        //截取学习文章中的图片路径方法
-        function extractImageSrcs(htmlString) {
-            const imgSrcRegex = /<img[^>]*src=(['"])?([^'"]+)\1[^>]*>/g;
-            const srcs = [];
-
-            let match;
-            while ((match = imgSrcRegex.exec(htmlString))) {
-                srcs.push(match[2]);
-            }
-
-            return srcs;
-        }
-        function dateStr(date) {
-            let newDate = new Date(date);
-            let month = newDate.getMonth() + 1 < 10 ? '0' + Number(newDate.getMonth() + 1) : newDate.getMonth() + 1;
-            let day = newDate.getDate() < 10 ? '0' + Number(newDate.getDate()) : newDate.getDate();
-            return newDate.getFullYear() + "-" + month + "-" + day;
-        }
-       
         //搜索
         function searchF() {
             let search = document.getElementById('search-input').value;
-            if(!search || !search.length){
+            if (!search || !search.length) {
                 allData = Object.assign([], JSON.parse(localStorage.getItem('study')));
-            }else{
+            } else {
                 let searchData = allData.filter((item) => {
-                item.keyword = item.keyword || '';
-                item.title = item.title || '';
-                item.description = item.description || '';
-                return item.title.includes(search) || item.description.includes(search) || item.keyword.includes(search)
-            })
-            allData = searchData;
+                    item.keyword = item.keyword || '';
+                    item.title = item.title || '';
+                    item.description = item.description || '';
+                    return item.title.includes(search) || item.description.includes(search) || item.keyword.includes(search)
+                })
+                allData = searchData;
             }
             page();
             getNums(allData);

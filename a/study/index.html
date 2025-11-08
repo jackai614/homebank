@@ -882,48 +882,8 @@
         let bchfzData = [];
         let sfglData = [];
         let allData = [];
-        let isUpdateData = 1;
-        if (localStorage.getItem('study') && localStorage.getItem('isUpdateData') && localStorage.getItem('isUpdateData') == isUpdateData) {
-            let study = JSON.parse(localStorage.getItem('study'));
-            allData = Object.assign([], study);
-            getNums(study);
-            page();
-        } else {
-            document.getElementById('articles-area').innerHTML = '<div class="loading">数据正在加载中...</div>';
-            var script = document.createElement('script');
-            script.src = './study.js';
-            // 将script标签添加到页面的head或body中
-            document.head.appendChild(script);
-            script.onload = function () {
-                allData = Object.assign([], study);
-                localStorage.setItem('study', JSON.stringify(allData));
-                localStorage.setItem('isUpdateData', isUpdateData);
-                getNums(study);
-                page()
-            }
-        }
-        function getNums(study) {
-            zpjsData = study.filter((item) => {
-                return item.keyword && (item.keyword.includes('栽培技术') || item.keyword.includes('管理') || item.keyword.includes('种植技巧'));
-            })
-            xjzxData = study.filter((item) => {
-                return item.keyword && (item.keyword.includes('修剪整形') || item.keyword.includes('修剪') || item.keyword.includes('整形'))
-            })
-            bchfzData = study.filter((item) => {
-                return item.keyword && (item.keyword.includes('病虫害防治') || item.keyword.includes('虫害') || item.keyword.includes('防治'))
-            })
-            sfglData = study.filter((item) => {
-                return item.keyword && (item.keyword.includes('水肥管理') || item.keyword.includes('水肥') || item.keyword.includes('管理'))
-            })
-            document.getElementById('total').innerText = study.length;
-            document.getElementById('zpjs').innerText = zpjsData.length;
-            document.getElementById('xjzx').innerText = xjzxData.length;
-            document.getElementById('bchfz').innerText = bchfzData.length;
-            document.getElementById('sfgl').innerText = sfglData.length;
-        }
-    </script>
-    <script>
-        // 性能优化：图片懒加载
+         var atStr = ``;
+         // 性能优化：图片懒加载
         function lazyLoadImages() {
             const lazyImages = document.querySelectorAll('.lazy-image');
 
@@ -945,25 +905,6 @@
                 imageObserver.observe(img);
             });
         }
-        //截取学习文章中的图片路径方法
-        function extractImageSrcs(htmlString) {
-            const imgSrcRegex = /<img[^>]*src=(['"])?([^'"]+)\1[^>]*>/g;
-            const srcs = [];
-
-            let match;
-            while ((match = imgSrcRegex.exec(htmlString))) {
-                srcs.push(match[2]);
-            }
-
-            return srcs;
-        }
-        function dateStr(date) {
-            let newDate = new Date(date);
-            let month = newDate.getMonth() + 1 < 10 ? '0' + Number(newDate.getMonth() + 1) : newDate.getMonth() + 1;
-            let day = newDate.getDate() < 10 ? '0' + Number(newDate.getDate()) : newDate.getDate();
-            return newDate.getFullYear() + "-" + month + "-" + day;
-        }
-        var atStr = ``;
         function page() {
             atStr = ``;
             allData.forEach((item) => {
@@ -998,6 +939,68 @@
             document.getElementById('articles-area').innerHTML = atStr;
             lazyLoadImages();
         }
+         function getNums(study) {
+            zpjsData = study.filter((item) => {
+                return item.keyword && (item.keyword.includes('栽培技术') || item.keyword.includes('管理') || item.keyword.includes('种植技巧'));
+            })
+            xjzxData = study.filter((item) => {
+                return item.keyword && (item.keyword.includes('修剪整形') || item.keyword.includes('修剪') || item.keyword.includes('整形'))
+            })
+            bchfzData = study.filter((item) => {
+                return item.keyword && (item.keyword.includes('病虫害防治') || item.keyword.includes('虫害') || item.keyword.includes('防治'))
+            })
+            sfglData = study.filter((item) => {
+                return item.keyword && (item.keyword.includes('水肥管理') || item.keyword.includes('水肥') || item.keyword.includes('管理'))
+            })
+            document.getElementById('total').innerText = study.length;
+            document.getElementById('zpjs').innerText = zpjsData.length;
+            document.getElementById('xjzx').innerText = xjzxData.length;
+            document.getElementById('bchfz').innerText = bchfzData.length;
+            document.getElementById('sfgl').innerText = sfglData.length;
+        }
+        let isUpdateData = 1;
+        if (localStorage.getItem('study') && localStorage.getItem('isUpdateData') && localStorage.getItem('isUpdateData') == isUpdateData) {
+            let study = JSON.parse(localStorage.getItem('study'));
+            allData = Object.assign([], study);
+            getNums(study);
+            page();
+        } else {
+            document.getElementById('articles-area').innerHTML = '<div class="loading">数据正在加载中...</div>';
+            var script = document.createElement('script');
+            script.src = './study.js';
+            // 将script标签添加到页面的head或body中
+            document.head.appendChild(script);
+            script.onload = function () {
+                allData = Object.assign([], study);
+                localStorage.setItem('study', JSON.stringify(allData));
+                localStorage.setItem('isUpdateData', isUpdateData);
+                getNums(study);
+                page()
+            }
+        }
+
+    </script>
+    <script>
+        
+        //截取学习文章中的图片路径方法
+        function extractImageSrcs(htmlString) {
+            const imgSrcRegex = /<img[^>]*src=(['"])?([^'"]+)\1[^>]*>/g;
+            const srcs = [];
+
+            let match;
+            while ((match = imgSrcRegex.exec(htmlString))) {
+                srcs.push(match[2]);
+            }
+
+            return srcs;
+        }
+        function dateStr(date) {
+            let newDate = new Date(date);
+            let month = newDate.getMonth() + 1 < 10 ? '0' + Number(newDate.getMonth() + 1) : newDate.getMonth() + 1;
+            let day = newDate.getDate() < 10 ? '0' + Number(newDate.getDate()) : newDate.getDate();
+            return newDate.getFullYear() + "-" + month + "-" + day;
+        }
+       
         //搜索
         function searchF() {
             let search = document.getElementById('search-input').value;

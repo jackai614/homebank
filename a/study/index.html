@@ -269,6 +269,40 @@
             background: var(--primary-color);
             color: var(--white);
             padding: 25px 30px;
+            position: relative;
+        }
+
+        .search {
+            position: absolute;
+            top: 25px;
+            right: 30px;
+        }
+
+        .search button {
+            font-size: 0.9em;
+            vertical-align: middle;
+            height: 39px;
+            padding: 0 10px;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            border-width: 0;
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--white);
+            cursor: pointer;
+        }
+
+        .search input {
+            height: 39px;
+            vertical-align: middle;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+            border-width: 0;
+            outline: none;
+            padding: 0 10px;
+            background: rgba(255, 255, 255, 0.7);
+            color: var(--text-light);
+            font-size: 0.9em;
+            transition: var(--transition);
         }
 
         .articles-header h2 {
@@ -637,6 +671,10 @@
                 grid-template-columns: 1fr;
             }
 
+            .search {
+                position: static;
+            }
+
             .pagination a {
                 width: 35px;
                 height: 35px;
@@ -742,25 +780,25 @@
                         <li class="category-item">
                             <a href="?category=planting">
                                 <i class="fas fa-seedling"></i>栽培技术
-                                <span class="category-count">8</span>
+                                <span class="category-count" id="zpjs">0</span>
                             </a>
                         </li>
                         <li class="category-item">
                             <a href="?category=pruning">
                                 <i class="fas fa-cut"></i>修剪整形
-                                <span class="category-count">6</span>
+                                <span class="category-count" id="xjzx">0</span>
                             </a>
                         </li>
                         <li class="category-item">
                             <a href="?category=pest">
                                 <i class="fas fa-bug"></i>病虫害防治
-                                <span class="category-count">7</span>
+                                <span class="category-count" id="bchfz">0</span>
                             </a>
                         </li>
                         <li class="category-item">
                             <a href="?category=fertilizer">
                                 <i class="fas fa-tint"></i>水肥管理
-                                <span class="category-count">5</span>
+                                <span class="category-count" id="sfgl">0</span>
                             </a>
                         </li>
                     </ul>
@@ -771,17 +809,19 @@
                     <div class="articles-header">
                         <h2>技术文章</h2>
                         <!-- <div class="articles-count">共<span></span>篇文章</div> -->
+                        <div class="search"><input type="text" placeholder="请输入搜索关键词" id="search-input"><button
+                                onclick="searchF()">搜索</button>
+                        </div>
                     </div>
 
                     <div class="articles-grid" id="articles-area">
-                        <!-- 文章卡片1 -->
-
+                        <!--  文章列表 -->
                     </div>
 
                     <!-- 分页 -->
                     <div class="pagination" id="pages">
                         <!-- <a href="#" class="disabled">&laquo;</a> -->
-                        
+
                         <!-- <a href="?page=2">&raquo;</a> -->
                     </div>
                 </section>
@@ -827,86 +867,63 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>地址:河南省安阳市内黄县马上乡繁阳四路西段北侧88号&nbsp;&nbsp;  <a style="color: #fff;text-decoration: none;" href="tel:13569022233">电话:13569022233</a>  &nbsp;&nbsp; 版权所有 © 2005-<span id="year"></span> 内黄县哥仨果树栽培专业合作社 <a target="_blank" style="color: #fff;"
+                <p>地址:河南省安阳市内黄县马上乡繁阳四路西段北侧88号&nbsp;&nbsp; <a style="color: #fff;text-decoration: none;"
+                        href="tel:13569022233">电话:13569022233</a> &nbsp;&nbsp; 版权所有 © 2005-<span id="year"></span>
+                    内黄县哥仨果树栽培专业合作社 <a target="_blank" style="color: #fff;"
                         href="https://beian.miit.gov.cn/">豫ICP备17041640号</a></p>
             </div>
         </div>
     </footer>
 
     <!-- 结构化数据标记 -->
-    <script src="./study.js"></script>
     <script>
-        let navs = ['栽培技术', '修剪整形', '病虫害防治', '水肥管理'];
-        let allData=study;
-        //截取学习文章中的图片路径方法
-        function extractImageSrcs(htmlString) {
-            const imgSrcRegex = /<img[^>]*src=(['"])?([^'"]+)\1[^>]*>/g;
-            const srcs = [];
-
-            let match;
-            while ((match = imgSrcRegex.exec(htmlString))) {
-                srcs.push(match[2]);
+        let zpjsData = [];
+        let xjzxData = [];
+        let bchfzData = [];
+        let sfglData = [];
+        let allData = [];
+        let isUpdateData = 1;
+        if (localStorage.getItem('study') && localStorage.getItem('isUpdateData') && localStorage.getItem('isUpdateData') == isUpdateData) {
+            let study = JSON.parse(localStorage.getItem('study'));
+            allData = Object.assign([], study);
+            getNums(study);
+        } else {
+            document.getElementById('articles-area').innerHTML = '<div class="loading">数据正在加载中...</div>';
+            var script = document.createElement('script');
+            script.src = './study.js';
+            // 将script标签添加到页面的head或body中
+            document.head.appendChild(script);
+            script.onload = function () {
+                allData = Object.assign([], study);
+                localStorage.setItem('study', JSON.stringify(allData));
+                localStorage.setItem('isUpdateData', isUpdateData);
+                getNums(study);
+                page(1)
             }
-
-            return srcs;
         }
-        function dateStr(date) {
-            let newDate = new Date(date);
-            let month = newDate.getMonth() + 1 < 10 ? '0' + Number(newDate.getMonth() + 1) : newDate.getMonth() + 1;
-            let day = newDate.getDate() < 10 ? '0' + Number(newDate.getDate()) : newDate.getDate();
-            return newDate.getFullYear() + "-" + month + "-" + day;
-        }
-        var atStr = ``;
-        var arr = [];
-        function page(num) {
-            arr = [];
-            atStr = ``;
-            arr = allData.filter((item, i) => {
-                return i > (num - 1) * 100 - 1 && i < num * 100;
+        function getNums(study) {
+            zpjsData = study.filter((item) => {
+                return item.keyword && (item.keyword.includes('栽培技术') || item.keyword.includes('管理') || item.keyword.includes('种植技巧'));
             })
-            let leng= Math.ceil(allData.length/100);
-            let pageStr=``;
-            for(let i=1;i<=leng;i++){
-                pageStr=pageStr+`<a href="?page=${i}" class="${i==num?'active':''}">${i}</a>`
-            }
-            document.getElementById('pages').innerHTML=pageStr;
-            arr.forEach((item) => {
-                atStr = atStr + `<article class="article-card" itemscope itemtype="1">
-                <div class="article-image">
-                <img class="lazy-image" width="300" height="200" itemprop="image" src="${extractImageSrcs(item.content)[0]}" alt="${item.title}"
-                onerror="this.src = '${extractImageSrcs(item.content).length ? 'http://www.nhxgsxh.com/imageProxy.php?url=' + extractImageSrcs(item.content)[0] : '/images/images/logo.jpeg'}'" />
-                
-                <span class="article-category">
-                    ${item.keyword.includes('虫') || item.keyword.includes('防治')?'病虫害防治':item.keyword.includes('水肥')?'水肥管理':item.keyword.includes('修剪')?'修剪整形':item.keyword.includes('栽培') || item.keyword.includes('管理')?'栽培技术':'其他'}</span>
-            </div>
-            <div class="article-content">
-                <h3 class="article-title" itemprop="headline">
-                    <a href="infor.html?id=${item.id}" itemprop="url" title="${item.title}">${item.title}</a>
-                </h3>
-                <div class="article-excerpt" itemprop="description">
-                    ${item.description.substr(0,55)}...
-                </div>
-                <div class="article-meta">
-                    <div class="article-date">
-                        <i class="far fa-calendar"></i>
-                        <time datetime="${dateStr(item.createTime)}" itemprop="datePublished">${dateStr(item.createTime)}</time>
-                    </div>
-                    <a href="infor.html?id=${item.id}" class="read-more">
-                        阅读全文 <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-        </article>`;
+            xjzxData = study.filter((item) => {
+                return item.keyword && (item.keyword.includes('修剪整形') || item.keyword.includes('修剪') || item.keyword.includes('整形'))
             })
-            document.getElementById('articles-area').innerHTML = atStr;
+            bchfzData = study.filter((item) => {
+                return item.keyword && (item.keyword.includes('病虫害防治') || item.keyword.includes('虫害') || item.keyword.includes('防治'))
+            })
+            sfglData = study.filter((item) => {
+                return item.keyword && (item.keyword.includes('水肥管理') || item.keyword.includes('水肥') || item.keyword.includes('管理'))
+            })
+            document.getElementById('total').innerText = study.length;
+            document.getElementById('zpjs').innerText = zpjsData.length;
+            document.getElementById('xjzx').innerText = xjzxData.length;
+            document.getElementById('bchfz').innerText = bchfzData.length;
+            document.getElementById('sfgl').innerText = sfglData.length;
         }
-        page(1)
     </script>
-
     <script>
-        document.getElementById('total').innerText = study.length;
         // 性能优化：图片懒加载
-        document.addEventListener('DOMContentLoaded', function () {
+        function lazyLoadImages() {
             const lazyImages = document.querySelectorAll('.lazy-image');
 
             const imageObserver = new IntersectionObserver((entries, observer) => {
@@ -926,7 +943,83 @@
                 img.dataset.src = src;
                 imageObserver.observe(img);
             });
+        }
+        //截取学习文章中的图片路径方法
+        function extractImageSrcs(htmlString) {
+            const imgSrcRegex = /<img[^>]*src=(['"])?([^'"]+)\1[^>]*>/g;
+            const srcs = [];
 
+            let match;
+            while ((match = imgSrcRegex.exec(htmlString))) {
+                srcs.push(match[2]);
+            }
+
+            return srcs;
+        }
+        function dateStr(date) {
+            let newDate = new Date(date);
+            let month = newDate.getMonth() + 1 < 10 ? '0' + Number(newDate.getMonth() + 1) : newDate.getMonth() + 1;
+            let day = newDate.getDate() < 10 ? '0' + Number(newDate.getDate()) : newDate.getDate();
+            return newDate.getFullYear() + "-" + month + "-" + day;
+        }
+        var atStr = ``;
+        function page() {
+            atStr = ``;
+            allData.forEach((item) => {
+                let keyword = item.keyword || '';
+                atStr = atStr + `<article class="article-card" itemscope itemtype="1">
+                <div class="article-image">
+                <img class="lazy-image" width="300" height="200" itemprop="image" src="${extractImageSrcs(item.content)[0]}" alt="${item.title}"
+                onerror="this.src = '${extractImageSrcs(item.content).length ? 'http://www.nhxgsxh.com/imageProxy.php?url=' + extractImageSrcs(item.content)[0] : '/images/images/logo.jpeg'}'" />
+                
+                <span class="article-category">
+                    ${keyword.includes('虫') || keyword.includes('防治') ? '病虫害防治' : keyword.includes('水肥') ? '水肥管理' : keyword.includes('修剪') ? '修剪整形' : keyword.includes('栽培') || keyword.includes('管理') ? '栽培技术' : '其他'}</span>
+            </div>
+            <div class="article-content">
+                <h3 class="article-title" itemprop="headline">
+                    <a href="infor.html?id=${item.id}" itemprop="url" title="${item.title}">${item.title}</a>
+                </h3>
+                <div class="article-excerpt" itemprop="description">
+                    ${item.description.substr(0, 55)}...
+                </div>
+                <div class="article-meta">
+                    <div class="article-date">
+                        <i class="far fa-calendar"></i>
+                        <time datetime="${dateStr(item.updateTime)}" itemprop="datePublished">${dateStr(item.createTime)}</time>
+                    </div>
+                    <a href="infor.html?id=${item.id}" class="read-more">
+                        阅读全文 <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </article>`;
+            })
+            document.getElementById('articles-area').innerHTML = atStr;
+            lazyLoadImages();
+        }
+        page()
+        //搜索
+        function searchF() {
+            let search = document.getElementById('search-input').value;
+            if(!search || !search.length){
+                allData = Object.assign([], JSON.parse(localStorage.getItem('study')));
+            }else{
+                let searchData = allData.filter((item) => {
+                item.keyword = item.keyword || '';
+                item.title = item.title || '';
+                item.description = item.description || '';
+                return item.title.includes(search) || item.description.includes(search) || item.keyword.includes(search)
+            })
+            allData = searchData;
+            }
+            page();
+            getNums(allData);
+        }
+    </script>
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
             // 显示当前年份
             document.getElementById('year').innerText = new Date().getFullYear();
 
@@ -955,7 +1048,17 @@
             // 文章筛选函数
             function filterArticles(category) {
                 // 实际应用中这里会有AJAX请求或前端筛选逻辑
-                console.log('筛选分类:', category);
+                // console.log('筛选分类:', category);
+                let allDatas = localStorage.getItem('study') ? JSON.parse(localStorage.getItem('study')) : [];
+                let obj = {
+                    'planting': zpjsData,
+                    'pruning': xjzxData,
+                    'pest': bchfzData,
+                    'fertilizer': sfglData,
+                    'all': allDatas
+                }
+                allData = obj[category];
+                page()
             }
 
             // 分页交互

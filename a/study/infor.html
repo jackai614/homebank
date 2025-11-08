@@ -409,7 +409,9 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>地址:河南省安阳市内黄县马上乡繁阳四路西段北侧88号&nbsp;&nbsp;  <a style="color: #fff;text-decoration: none;" href="tel:13569022233">电话:13569022233</a>  &nbsp;&nbsp; 版权所有 © 2005-<span id="year"></span> 内黄县哥仨果树栽培专业合作社 <a target="_blank" style="color: #fff;"
+                <p>地址:河南省安阳市内黄县马上乡繁阳四路西段北侧88号&nbsp;&nbsp; <a style="color: #fff;text-decoration: none;"
+                        href="tel:13569022233">电话:13569022233</a> &nbsp;&nbsp; 版权所有 © 2005-<span id="year"></span>
+                    内黄县哥仨果树栽培专业合作社 <a target="_blank" style="color: #fff;"
                         href="https://beian.miit.gov.cn/">豫ICP备17041640号</a></p>
             </div>
         </div>
@@ -435,23 +437,42 @@
 
             return srcs;
         }
-        if (getUrlParam('id')) {
-            let id = Number(getUrlParam('id'));
+        //显示内容的方法
+        function showContent(study,id) {
             let obj = study.filter((item) => {
                 return item.id === id;
             })[0];
             let contentStr = obj.content;
             let titleStr = obj.title;
-            document.querySelector('title').innerHTML = '内黄哥仨合作社-学习中心|'+ titleStr;
+            document.querySelector('title').innerHTML = '内黄哥仨合作社-学习中心|' + titleStr;
             let keyword = obj.keyword;
             let description = obj.description;
             document.querySelector('meta[name="keywords"]').setAttribute('content', keyword);
-            document.querySelector('meta[name="description"]').setAttribute('content', description.substr(0, 75)+'...');
+            document.querySelector('meta[name="description"]').setAttribute('content', description.substr(0, 75) + '...');
             let urls = extractImageSrcs(contentStr);
             urls.forEach((url) => {
                 contentStr = contentStr.replace(url, 'http://www.nhxgsxh.com/imageProxy.php?url=' + url)
             })
             document.getElementById('article').innerHTML = contentStr;
+        }
+        if (getUrlParam('id')) {
+            let id = Number(getUrlParam('id'));
+            let isUpdateData = 1;//更新study数据时改变此数值
+            if (localStorage.getItem('study') && localStorage.getItem('isUpdateData') && localStorage.getItem('isUpdateData') == isUpdateData) {
+                let study = JSON.parse(localStorage.getItem('study'));
+                showContent(study,id);
+            } else {
+                var script = document.createElement('script');
+                script.src = './study.js';
+                // 将script标签添加到页面的head或body中
+                document.head.appendChild(script);
+                script.onload = function () {
+                    showContent(study,id);
+                    localStorage.setItem('study', JSON.stringify(allData));
+                    localStorage.setItem('isUpdateData', isUpdateData);
+                }
+            }
+            
         }
         // 移动端菜单切换
         document.addEventListener('DOMContentLoaded', function () {

@@ -977,7 +977,7 @@
             document.getElementById('bchfz').innerText = bchfzData.length;
             document.getElementById('sfgl').innerText = sfglData.length;
         }
-        let isUpdateData = 1;
+        let isUpdateData = 2; //更新study数据时改变此数值
         if (localStorage.getItem('study') && localStorage.getItem('isUpdateData') && localStorage.getItem('isUpdateData') == isUpdateData) {
             let study = JSON.parse(localStorage.getItem('study'));
             allData = Object.assign([], study);

@@ -466,6 +466,7 @@
                 // 将script标签添加到页面的head或body中
                 document.head.appendChild(script);
                 script.onload = function () {
+                    study = study.sort((a, b) => b.updateTime - a.updateTime);
                     let allData = Object.assign([], study);
                     showContent(study,id);
                     localStorage.setItem('study', JSON.stringify(allData));

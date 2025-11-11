@@ -1,11 +1,537 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>页面不存在</title>
+    <meta name="description" content="内黄县果树协会 - 页面未找到，返回首页或浏览其他内容">
+    <meta name="robots" content="noindex, nofollow">
+    <title>页面未找到 - 内黄县果树协会</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preload" href="fonts/noto-sans-sc.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="canonical" href="https://nhxgsxh.com/">
+
+    <style>
+        /* 404页面专用样式 */
+        :root {
+            --primary-color: #2e7d32;
+            --primary-dark: #1b5e20;
+            --primary-light: #4caf50;
+            --secondary-color: #ff9800;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --background-light: #f8f9fa;
+            --white: #ffffff;
+            --border-color: #e0e0e0;
+            --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            --border-radius: 8px;
+        }
+
+        .error-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8f5e8 100%);
+        }
+
+        .error-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            margin-top: 80px;
+        }
+
+        .error-container {
+            text-align: center;
+            max-width: 600px;
+            padding: 3rem 2rem;
+        }
+
+        .error-animation {
+            margin-bottom: 2rem;
+        }
+
+        .error-illustration {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 2rem;
+            position: relative;
+        }
+
+        .error-illustration::before {
+            content: '404';
+            font-size: 8rem;
+            font-weight: 900;
+            color: var(--primary-light);
+            opacity: 0.1;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+        }
+
+        .error-icon {
+            width: 120px;
+            height: 120px;
+            background: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            box-shadow: var(--shadow);
+            position: relative;
+            z-index: 2;
+        }
+
+        .error-icon svg {
+            width: 60px;
+            height: 60px;
+            color: var(--primary-color);
+        }
+
+        .error-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .error-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        .error-description {
+            color: var(--text-light);
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        .error-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(46, 125, 50, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-light);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .btn-icon {
+            font-size: 1.2rem;
+        }
+
+        .quick-links {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-top: 2rem;
+        }
+
+        .quick-links h3 {
+            color: var(--primary-dark);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .link-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.8rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            color: var(--text-dark);
+            transition: all 0.3s;
+        }
+
+        .link-item:hover {
+            border-color: var(--primary-color);
+            transform: translateX(5px);
+        }
+
+        .link-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--background-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        .link-content h4 {
+            font-size: 0.9rem;
+            margin-bottom: 0.2rem;
+            color: var(--text-dark);
+        }
+
+        .link-content span {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        .search-box {
+            max-width: 400px;
+            margin: 2rem auto;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border: 2px solid var(--border-color);
+            border-radius: 25px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .search-input:focus {
+            border-color: var(--primary-color);
+        }
+
+        .search-btn {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--primary-color);
+            color: var(--white);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+
+        .search-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        /* 动画效果 */
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .error-icon {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .error-title {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .error-subtitle {
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .error-description {
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .error-actions {
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .error-title {
+                font-size: 2.5rem;
+            }
+
+            .error-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .error-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+
+            .links-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .error-illustration::before {
+                font-size: 6rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .error-container {
+                padding: 2rem 1rem;
+            }
+
+            .error-title {
+                font-size: 2rem;
+            }
+
+            .error-illustration {
+                width: 150px;
+                height: 150px;
+            }
+
+            .error-illustration::before {
+                font-size: 4rem;
+            }
+
+            .error-icon {
+                width: 100px;
+                height: 100px;
+            }
+
+            .error-icon svg {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        /* 性能优化 */
+        @media (prefers-reduced-motion: reduce) {
+            .error-icon {
+                animation: none;
+            }
+
+            .error-title,
+            .error-subtitle,
+            .error-description,
+            .error-actions {
+                animation: none;
+            }
+
+            .link-item:hover {
+                transform: none;
+            }
+
+            .btn:hover {
+                transform: none;
+            }
+        }
+    </style>
 </head>
-<body>
-    <p style="width: 100%; text-align: center;color: #333; font-size: 20px; margin-top: 200px;">404，页面不存在，请访问<a href="/" style="color: #333;">首页</a></p>
+
+<body class="error-page">
+    <!-- 404错误内容 -->
+    <main class="error-content">
+        <div class="error-container">
+            <div class="error-animation">
+                <div class="error-illustration">
+                    <div class="error-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <h1 class="error-title">页面未找到</h1>
+            <h2 class="error-subtitle">抱歉，您访问的页面不存在</h2>
+            <p class="error-description">
+                可能是网址输入错误，或者页面已被移动或删除。<br>
+            </p>
+            <!-- 操作按钮 -->
+            <div class="error-actions">
+                <a href="index.html" class="btn btn-primary">
+                    <span class="btn-icon">🏠</span>
+                    返回首页
+                </a>
+                <a href="javascript:history.back()" class="btn btn-secondary">
+                    <span class="btn-icon">↩️</span>
+                    返回上页
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // 404页面功能
+        document.addEventListener('DOMContentLoaded', function () {
+            // 移动端菜单切换
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navMenu = document.querySelector('.nav-menu');
+
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', function () {
+                    navMenu.classList.toggle('active');
+                    this.classList.toggle('active');
+                });
+            }
+
+            // 搜索功能
+            const searchInput = document.querySelector('.search-input');
+            const searchBtn = document.querySelector('.search-btn');
+
+            function performSearch() {
+                const searchTerm = searchInput.value.trim();
+                if (searchTerm) {
+                    // 这里可以集成实际的搜索功能
+                    window.location.href = `search.html?q=${encodeURIComponent(searchTerm)}`;
+                }
+            }
+
+            searchBtn.addEventListener('click', performSearch);
+            searchInput.addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') {
+                    performSearch();
+                }
+            });
+
+            // 错误追踪
+            function track404Error() {
+                const currentUrl = window.location.href;
+                const referrer = document.referrer;
+
+                console.log('404错误追踪:', {
+                    url: currentUrl,
+                    referrer: referrer,
+                    timestamp: new Date().toISOString()
+                });
+
+                // 这里可以集成错误上报服务
+                // gtag('event', 'page_not_found', {
+                //     'page_location': currentUrl,
+                //     'page_referrer': referrer
+                // });
+            }
+
+            // 页面加载统计
+            window.addEventListener('load', function () {
+                track404Error();
+
+                // 性能监控
+                const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
+                console.log('404页面加载时间:', loadTime + 'ms');
+            });
+
+            // 自动重定向检查
+            function checkAutoRedirect() {
+                const path = window.location.pathname;
+                const commonMistakes = {
+                    'index.html': '/',
+                    'home.html': '/',
+                    'main.html': '/',
+                    'default.html': '/'
+                };
+
+                for (const [wrong, correct] of Object.entries(commonMistakes)) {
+                    if (path.includes(wrong)) {
+                        if (confirm('是否跳转到首页？')) {
+                            window.location.href = correct;
+                            return;
+                        }
+                    }
+                }
+            }
+
+            // 延迟执行重定向检查
+            setTimeout(checkAutoRedirect, 3000);
+        });
+
+        // 结构化数据
+        const structuredData = {
+            "@context": "https://schema.org",
+            "@type": "ErrorPage",
+            "name": "404 - 页面未找到",
+            "description": "内黄县果树协会 - 页面不存在错误",
+            "url": window.location.href,
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://nhxgsxh.com/404.html"
+            }
+        };
+
+        const script = document.createElement('script');
+        script.type = 'application/ld+json';
+        script.textContent = JSON.stringify(structuredData);
+        document.head.appendChild(script);
+    </script>
 </body>
+
 </html>

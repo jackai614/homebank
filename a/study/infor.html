@@ -247,6 +247,69 @@
             top: -45px;
         }
 
+        /* loading样式 */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            flex-direction: column;
+        }
+
+        .loader {
+            width: 80px;
+            height: 80px;
+            border: 8px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 8px solid #2e7d32;
+            animation: spin 1.5s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        .loading-text {
+            color: white;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        .dots {
+            display: inline-block;
+            animation: dots 1.5s infinite;
+        }
+
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes dots {
+
+            0%,
+            20% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
         /* 响应式设计 */
         @media (max-width: 768px) {
             .header-main {
@@ -369,6 +432,11 @@
         <div class="container">
             <div id="article"></div>
         </div>
+        <!-- loading -->
+        <div class="loading-overlay" id="loadingOverlay">
+            <div class="loader"></div>
+            <div class="loading-text">数据正在加载中<span class="dots">...</span></div>
+        </div>
     </main>
 
     <!-- 页脚 -->
@@ -437,7 +505,7 @@
             return srcs;
         }
         //显示内容的方法
-        function showContent(study,id) {
+        function showContent(study, id) {
             let obj = study.filter((item) => {
                 return item.id === id;
             })[0];
@@ -457,9 +525,11 @@
         if (getUrlParam('id')) {
             let id = Number(getUrlParam('id'));
             let isUpdateData = 2;//更新study数据时改变此数值
+            const loadingOverlay = document.getElementById('loadingOverlay'); 
             if (localStorage.getItem('study') && localStorage.getItem('isUpdateData') && localStorage.getItem('isUpdateData') == isUpdateData) {
                 let study = JSON.parse(localStorage.getItem('study'));
-                showContent(study,id);
+                showContent(study, id);
+                loadingOverlay.style.display = 'none';//隐藏loading
             } else {
                 var script = document.createElement('script');
                 script.src = './study.js';
@@ -468,12 +538,13 @@
                 script.onload = function () {
                     study = study.sort((a, b) => b.updateTime - a.updateTime);
                     let allData = Object.assign([], study);
-                    showContent(study,id);
+                    showContent(study, id);
+                    loadingOverlay.style.display = 'none';//隐藏loading
                     localStorage.setItem('study', JSON.stringify(allData));
                     localStorage.setItem('isUpdateData', isUpdateData);
                 }
             }
-            
+
         }
         // 移动端菜单切换
         document.addEventListener('DOMContentLoaded', function () {

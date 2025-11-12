@@ -520,9 +520,10 @@
             document.querySelector('meta[name="keywords"]').setAttribute('content', keyword);
             document.querySelector('meta[name="description"]').setAttribute('content', description.substr(0, 75) + '...');
             let urls = extractImageSrcs(contentStr);
-            urls.forEach((url) => {
-                contentStr = contentStr.replace(url, 'http://www.nhxgsxh.com/imageProxy.php?url=' + url)
-            })
+            // urls.forEach((url) => {
+            //     contentStr = contentStr.replace(url, 'http://www.nhxgsxh.com/imageProxy.php?url=' + url)
+            // })
+            contentStr = contentStr.replace(/\<img /g, `<img onerror="this.src = '${extractImageSrcs(contentStr).length ? 'http://www.nhxgsxh.com/imageProxy.php?url=' + extractImageSrcs(contentStr) : '/images/images/logo.jpeg'}'"`);
             document.getElementById('article').innerHTML = contentStr;
         }
         if (getUrlParam('id')) {

@@ -5,9 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>内黄县哥仨果树栽培专业合作社-毛蟠桃品种介绍</title>
-    <meta name="keywords" content="哥仨合作社,抗重茬砧木,新品种桃,蟠桃">
-    <meta name="description"
-        content="内黄县哥仨果树栽培专业合作社建有500亩河南新品种桃苗基地，其中包括“中蟠11号”、“中蟠13号”等20多个毛蟠桃品种，为桃树产业发展提供了有力保障。">
+    <meta name="keywords" content="哥仨合作社,抗重茬桃苗基地,新品种桃,蟠桃">
+    <meta name="description" content="内黄县哥仨果树栽培专业合作社建有500亩河南新品种桃苗基地，其中包括“中蟠11号”、“中蟠13号”等20多个毛蟠桃品种，为桃树产业发展提供了有力保障。">
     <meta name="author" content="内黄县哥仨果树栽培专业合作社自研团队">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -598,7 +597,9 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>地址:河南省安阳市内黄县马上乡繁阳四路西段北侧88号&nbsp;&nbsp;  <a style="color: #fff;text-decoration: none;" href="tel:13569022233">电话:13569022233</a>  &nbsp;&nbsp; 版权所有 © 2005-<span id="year"></span> 内黄县哥仨果树栽培专业合作社 <a target="_blank" style="color: #fff;"
+                <p>地址:河南省安阳市内黄县马上乡繁阳四路西段北侧88号&nbsp;&nbsp; <a style="color: #fff;text-decoration: none;"
+                        href="tel:13569022233">电话:13569022233</a> &nbsp;&nbsp; 版权所有 © 2005-<span id="year"></span>
+                    内黄县哥仨果树栽培专业合作社 <a target="_blank" style="color: #fff;"
                         href="https://beian.miit.gov.cn/">豫ICP备17041640号</a></p>
             </div>
         </div>
@@ -704,8 +705,11 @@
             } catch (error) {
                 console.error('Error:', error);
             }
+            localStorage.setItem('isUpBaiduData', new Date().getDate());
         }
-        submitToBaidu();
+        if (localStorage.getItem('isUpBaiduData') != new Date().getDate() + '') {
+            submitToBaidu();
+        }
     </script>
 </body>
 

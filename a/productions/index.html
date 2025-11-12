@@ -5,9 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>内黄县哥仨果树栽培专业合作社-新品种桃介绍</title>
-    <meta name="keywords" content="哥仨合作社,抗重茬砧木,新品种桃,中油朱玉,中桃颜玉">
-    <meta name="description"
-        content="内黄县哥仨果树栽培专业合作社建有500亩新品种桃苗基地，利用中桃抗砧一号、GF677等抗重茬砧木培育出茁壮的抗重茬桃苗，同时引进了中油朱玉、中桃颜玉等新品种桃。">
+    <meta name="keywords" content="哥仨合作社,抗重茬桃苗,新品种桃,中油朱玉,中桃颜玉">
+    <meta name="description" content="内黄县哥仨果树栽培专业合作社建有500亩新品种桃苗基地，利用中桃抗砧一号、GF677等抗重茬砧木培育出茁壮的抗重茬桃苗，同时引进了中油朱玉、中桃颜玉等新品种桃。">
     <meta name="author" content="内黄县哥仨果树栽培专业合作社自研团队">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -533,14 +532,14 @@
                 <h2 style="text-align: center; color: #2e7d32; margin: 30px 0; font-size: 2em;">品种介绍</h2>
                 <div class="products-grid" id="productsContainer">
                     <div class="product-card"
-                        title="抗重茬桃苗是利用抗重插砧木进行无性繁殖的扦插苗木，主要克服桃树种植中的再植障碍问题，其特点在于他的抗重茬病、抗根结线虫、抗干旱、耐瘠薄、长势旺盛、接穗亲和力更强，有助于果树的提前丰产。">
+                        title="抗重茬桃苗是利用抗重茬砧木进行无性繁殖的扦插苗木，主要克服桃树种植中的再植障碍问题，其特点在于他的抗重茬病、抗根结线虫、抗干旱、耐瘠薄、长势旺盛、接穗亲和力更强，有助于果树的提前丰产。">
                         <div class="product-image"> <img
                                 src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='200' viewBox='0 0 300 200'%3E%3Crect width='300' height='200' fill='%23c8e6c9'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='18' fill='%232e7d32'%3E加载中...%3C/text%3E%3C/svg%3E"
                                 class="lazy-image" data-src="/images/miaomu/kangzhen1hao.jpg" alt="中桃抗砧一号"> </div>
                         <div class="product-content">
-                            <h3 class="product-title">抗重茬砧木</h3>
+                            <h3 class="product-title">抗重茬桃苗</h3>
                             <p class="product-description">
-                                抗重茬桃苗是利用抗重插砧木进行无性繁殖的扦插苗木，主要克服桃树种植中的再植障碍问题，其特点在于他的抗重茬病、抗根结线虫、抗干旱、耐瘠薄、长势旺盛、接穗亲和力更强，有助于果树的提前丰产。
+                                抗重茬桃苗是利用抗砧一号抗重茬砧木进行无性繁殖的扦插苗木，主要克服桃树种植中的再植障碍问题，其特点在于他的抗重茬病、抗根结线虫、抗干旱、耐瘠薄、长势旺盛、接穗亲和力更强，有助于果树的提前丰产。
                         </div> <a href="/a/productions/infor.html?id=0" class="product-link" target="_blank"> 查看详情 </a>
                     </div>
                     <div class="product-card" title="特早熟桃品种兴农红2号，是2017年河南省林木审定委员会审定的良种极早熟个头大，品质好，露天种植，大棚的价钱，是极早熟品种的首选。">
@@ -933,7 +932,9 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>地址:河南省安阳市内黄县马上乡繁阳四路西段北侧88号&nbsp;&nbsp;  <a style="color: #fff;text-decoration: none;" href="tel:13569022233">电话:13569022233</a>  &nbsp;&nbsp; 版权所有 © 2005-<span id="year"></span> 内黄县哥仨果树栽培专业合作社 <a target="_blank" style="color: #fff;"
+                <p>地址:河南省安阳市内黄县马上乡繁阳四路西段北侧88号&nbsp;&nbsp; <a style="color: #fff;text-decoration: none;"
+                        href="tel:13569022233">电话:13569022233</a> &nbsp;&nbsp; 版权所有 © 2005-<span id="year"></span>
+                    内黄县哥仨果树栽培专业合作社 <a target="_blank" style="color: #fff;"
                         href="https://beian.miit.gov.cn/">豫ICP备17041640号</a></p>
             </div>
         </div>
@@ -1048,8 +1049,11 @@
             } catch (error) {
                 console.error('Error:', error);
             }
+            localStorage.setItem('isUpBaiduData', new Date().getDate());
         }
-        submitToBaidu();
+        if (localStorage.getItem('isUpBaiduData') != new Date().getDate() + '') {
+            submitToBaidu();
+        }
     </script>
 </body>
 

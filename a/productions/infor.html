@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>内黄县哥仨果树栽培专业合作社-新品种简介</title>
-    <meta name="keywords" content="抗重插桃苗,油蟠桃苗,繁育基地,新品种桃">
+    <title>内黄县哥仨果树栽培专业合作社-河南新品种桃苗基地|新品种简介</title>
+    <meta name="keywords" content="抗重茬桃苗,油蟠桃苗,繁育基地,新品种桃">
     <meta name="description"
         content="内黄县哥仨果树栽培专业合作社成立于2005年，位于河南省安阳市内黄县，是国家级农民合作示范社。合作社建有500亩河南新品种桃苗基地，近年来利用中桃抗砧一号、GF677等抗重茬砧木采用无性繁殖技术培育出的抗重茬桃苗解决了重茬地桃树重茬病的烦恼，为桃树产业发展提供了有力保障。">
     <meta name="author" content="内黄县哥仨果树栽培专业合作社自研团队">
@@ -530,8 +530,8 @@
         var datas = [
             {
                 "fenlei": "桃苗",
-                "name": "抗重茬砧木",
-                "desc": "抗重茬桃苗是利用抗重插砧木进行无性繁殖的扦插苗木，主要克服桃树种植中的再植障碍问题，其特点在于他的抗重茬病、抗根结线虫、抗干旱、耐瘠薄、长势旺盛、接穗亲和力更强，有助于果树的提前丰产。",
+                "name": "抗重茬桃苗",
+                "desc": "抗重茬桃苗是利用抗重茬砧木进行无性繁殖的扦插苗木，主要克服桃树种植中的再植障碍问题，其特点在于他的抗重茬病、抗根结线虫、抗干旱、耐瘠薄、长势旺盛、接穗亲和力更强，有助于果树的提前丰产。",
                 "img": "/images/miaomu/kangzhen1hao.jpg"
             },
             {
@@ -713,8 +713,8 @@
                 </div>`;
         document.getElementById('productionInfor').innerHTML = str;
         document.querySelector('title').innerHTML = '内黄县哥仨果树栽培专业合作社-新品种' + datas[index].fenlei + '|' + datas[index].name;
-        document.querySelector('meta[name="keywords"]').setAttribute('content', "抗重插桃苗,油蟠桃苗,繁育基地,新品种桃," + datas[index].name + datas[index].fenlei + "介绍");
-        document.querySelector('meta[name="description"]').setAttribute('content', datas[index].desc.includes(datas[index].name) ? datas[index].desc.substr(0,75)+'...' : datas[index].name + datas[index].desc.substr(0,75)+'...');
+        document.querySelector('meta[name="keywords"]').setAttribute('content', "抗重茬桃苗,油蟠桃苗,繁育基地,新品种桃," + datas[index].name + datas[index].fenlei + "介绍");
+        document.querySelector('meta[name="description"]').setAttribute('content', datas[index].desc.includes(datas[index].name) ? datas[index].desc.substr(0, 75) + '...' : datas[index].name + datas[index].desc.substr(0, 75) + '...');
     </script>
     <script>
         async function submitToBaidu() {
@@ -733,8 +733,11 @@
             } catch (error) {
                 console.error('Error:', error);
             }
+            localStorage.setItem('isUpBaiduData', new Date().getDate());
         }
-        submitToBaidu();
+        if (localStorage.getItem('isUpBaiduData') != new Date().getDate() + '') {
+            submitToBaidu();
+        }
     </script>
 </body>
 

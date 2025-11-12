@@ -729,8 +729,11 @@
             } catch (error) {
                 console.error('Error:', error);
             }
+            localStorage.setItem('isUpBaiduData', new Date().getDate());
         }
-        submitToBaidu();
+        if (localStorage.getItem('isUpBaiduData') != new Date().getDate() + '') {
+            submitToBaidu();
+        }
     </script>
 </body>
 

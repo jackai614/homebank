@@ -523,6 +523,44 @@
                 }
             });
         }
+        function processPTags(target) {
+            // 判断输入类型
+            let container;
+            let isStringInput = typeof target === 'string';
+
+            if (isStringInput) {
+                // 如果是字符串，创建临时容器
+                container = document.createElement('div');
+                container.innerHTML = target;
+            } else {
+                // 如果是DOM元素，直接使用
+                container = target;
+            }
+
+            // 获取所有的p标签
+            const pTags = container.querySelectorAll('p');
+
+            // 遍历p标签（从后往前遍历，避免删除元素时索引变化的问题）
+            for (let i = pTags.length - 1; i >= 0; i--) {
+                const pTag = pTags[i];
+
+                // 检查p标签内是否包含a标签
+                const hasATag = pTag.querySelector('a') !== null;
+
+                if (hasATag) {
+                    // 如果包含a标签，删除该p标签
+                    pTag.parentNode.removeChild(pTag);
+                }
+                // 如果不包含a标签，什么也不做
+            }
+
+            // 根据输入类型返回相应结果
+            if (isStringInput) {
+                return container.innerHTML;
+            } else {
+                return container;
+            }
+        }
 
         //显示内容的方法
         function showContent(study, id) {
@@ -537,7 +575,7 @@
             document.querySelector('meta[name="keywords"]').setAttribute('content', keyword);
             document.querySelector('meta[name="description"]').setAttribute('content', description.substr(0, 75) + '...');
             contentStr = addOnErrorToImgs(contentStr);
-            document.getElementById('article').innerHTML = contentStr;
+            document.getElementById('article').innerHTML = processPTags(contentStr);
         }
         if (getUrlParam('id')) {
             let id = Number(getUrlParam('id'));

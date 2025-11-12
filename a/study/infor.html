@@ -382,6 +382,7 @@
             .footer-content {
                 grid-template-columns: 1fr;
             }
+
             #article .img-center img {
                 max-width: 100%;
             }
@@ -495,18 +496,34 @@
             const urlParams = new URLSearchParams(window.location.search);
             return urlParams.get(name);
         }
-        //提取字符串中图片的URL
-        function extractImageSrcs(htmlString) {
-            const imgSrcRegex = /<img[^>]*src=(['"])?([^'"]+)\1[^>]*>/g;
-            const srcs = [];
+        // 获取字符串中的img标签，并添加onerror属性
+        function addOnErrorToImgs(htmlString) {
+            // 使用正则表达式匹配所有img标签
+            const imgTagRegex = /<img\s+([^>]*)>/gi;
 
-            let match;
-            while ((match = imgSrcRegex.exec(htmlString))) {
-                srcs.push(match[2]);
-            }
+            return htmlString.replace(imgTagRegex, (match, attributes) => {
+                // 提取src属性值
+                const srcMatch = attributes.match(/\bsrc\s*=\s*["']([^"']*)["']/i);
+                let onerrorValue = "this.style.display='none'"; // 默认值
 
-            return srcs;
+                if (srcMatch && srcMatch[1]) {
+                    // 如果有src属性，构造指定的onerror值
+                    onerrorValue = `this.src='http://www.nhxgsxh.com/imageProxy.php?url=${encodeURIComponent(srcMatch[1])}'`;
+                }
+
+                // 检查是否已经有onerror属性
+                const hasOnError = /onerror\s*=/i.test(attributes);
+
+                if (hasOnError) {
+                    // 如果已经有onerror属性，替换它
+                    return match.replace(/onerror\s*=\s*["'][^"']*["']/i, `onerror="${onerrorValue}"`);
+                } else {
+                    // 如果没有onerror属性，在现有属性后添加
+                    return `<img ${attributes} onerror="${onerrorValue}">`;
+                }
+            });
         }
+
         //显示内容的方法
         function showContent(study, id) {
             let obj = study.filter((item) => {
@@ -519,17 +536,13 @@
             let description = obj.description;
             document.querySelector('meta[name="keywords"]').setAttribute('content', keyword);
             document.querySelector('meta[name="description"]').setAttribute('content', description.substr(0, 75) + '...');
-            let urls = extractImageSrcs(contentStr);
-            // urls.forEach((url) => {
-            //     contentStr = contentStr.replace(url, 'http://www.nhxgsxh.com/imageProxy.php?url=' + url)
-            // })
-            contentStr = contentStr.replace(/\<img /g, `<img onerror="this.src = '${extractImageSrcs(contentStr).length ? 'http://www.nhxgsxh.com/imageProxy.php?url=' + extractImageSrcs(contentStr) : '/images/images/logo.jpeg'}'"`);
+            contentStr = addOnErrorToImgs(contentStr);
             document.getElementById('article').innerHTML = contentStr;
         }
         if (getUrlParam('id')) {
             let id = Number(getUrlParam('id'));
             let isUpdateData = 2;//更新study数据时改变此数值
-            const loadingOverlay = document.getElementById('loadingOverlay'); 
+            const loadingOverlay = document.getElementById('loadingOverlay');
             if (localStorage.getItem('study') && localStorage.getItem('isUpdateData') && localStorage.getItem('isUpdateData') == isUpdateData) {
                 let study = JSON.parse(localStorage.getItem('study'));
                 showContent(study, id);

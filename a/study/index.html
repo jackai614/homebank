@@ -1044,8 +1044,8 @@
             document.getElementById('bchfz').innerText = bchfzData.length;
             document.getElementById('sfgl').innerText = sfglData.length;
         }
-        let isUpdateData = 2; //更新study数据时改变此数值
-        const loadingOverlay = document.getElementById('loadingOverlay'); 
+        let isUpdateData = 3; //更新study数据时改变此数值
+        const loadingOverlay = document.getElementById('loadingOverlay');
         if (localStorage.getItem('study') && localStorage.getItem('isUpdateData') && localStorage.getItem('isUpdateData') == isUpdateData) {
             let study = JSON.parse(localStorage.getItem('study'));
             allData = Object.assign([], study);
@@ -1189,8 +1189,11 @@
             } catch (error) {
                 console.error('Error:', error);
             }
+            localStorage.setItem('isUpBaiduData', new Date().getDate());
         }
-        submitToBaidu();
+        if (localStorage.getItem('isUpBaiduData') != new Date().getDate() + '') {
+            submitToBaidu();
+        }
     </script>
 </body>
 

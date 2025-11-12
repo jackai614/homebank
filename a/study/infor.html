@@ -543,7 +543,7 @@
             // 遍历p标签（从后往前遍历，避免删除元素时索引变化的问题）
             for (let i = pTags.length - 1; i >= 0; i--) {
                 const pTag = pTags[i];
-                const isPTagText = pTag.innerText.includes('关注惠农学堂') ;
+                const isPTagText = pTag.innerText.includes('关注惠农学堂');
                 // 检查p标签内是否包含a标签
                 const hasATag = pTag.querySelector('a') !== null || isPTagText;
 
@@ -579,7 +579,7 @@
         }
         if (getUrlParam('id')) {
             let id = Number(getUrlParam('id'));
-            let isUpdateData = 2;//更新study数据时改变此数值
+            let isUpdateData = 3;//更新study数据时改变此数值
             const loadingOverlay = document.getElementById('loadingOverlay');
             if (localStorage.getItem('study') && localStorage.getItem('isUpdateData') && localStorage.getItem('isUpdateData') == isUpdateData) {
                 let study = JSON.parse(localStorage.getItem('study'));
@@ -645,8 +645,11 @@
             } catch (error) {
                 console.error('Error:', error);
             }
+            localStorage.setItem('isUpBaiduData', new Date().getDate());
         }
-        submitToBaidu();
+        if (localStorage.getItem('isUpBaiduData') != new Date().getDate() + '') {
+            submitToBaidu();
+        }
     </script>
 </body>
 

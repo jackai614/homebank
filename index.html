@@ -1022,6 +1022,7 @@
     </footer>
 
     <script>
+        let currentSlide = 0;
         // 图片懒加载功能
         document.addEventListener('DOMContentLoaded', function () {
             // 懒加载图片元素
@@ -1085,7 +1086,6 @@
             // 轮播图功能
             const slides = document.querySelectorAll('.hero-slide');
             const dots = document.querySelectorAll('.hero-dot');
-            let currentSlide = 0;
 
             // 显示指定幻灯片
             function showSlide(n) {

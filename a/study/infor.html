@@ -573,7 +573,7 @@
             let keyword = obj.keyword;
             let description = obj.description;
             document.querySelector('meta[name="keywords"]').setAttribute('content', keyword);
-            document.querySelector('meta[name="description"]').setAttribute('content', description.substr(0, 75) + '...');
+            document.querySelector('meta[name="description"]').setAttribute('content', '内黄县哥仨合作社桃苗基地在线分享：'+description.substr(0, 75) + '...');
             contentStr = addOnErrorToImgs(contentStr);
             document.getElementById('article').innerHTML = processPTags(contentStr);
         }

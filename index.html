@@ -747,17 +747,17 @@
 
     <!-- 轮播图 -->
     <section class="hero" id="home">
-        <div class="hero-slide active lazy-bg" data-bg="/images/banner1.jpg" onclick="bannerLink(0)">
+        <div class="hero-slide active lazy-bg" data-bg="/images/banner1.jpg">
             <div class="hero-overlay"></div>
             <div class="hero-content">
             </div>
         </div>
-        <div class="hero-slide lazy-bg" data-bg="/images/banner2.jpg" onclick="bannerLink(1)">
+        <div class="hero-slide lazy-bg" data-bg="/images/banner2.jpg">
             <div class="hero-overlay"></div>
             <div class="hero-content">
             </div>
         </div>
-        <div class="hero-slide lazy-bg" data-bg="/images/banner3.jpg" onclick="bannerLink(2)">
+        <div class="hero-slide lazy-bg" data-bg="/images/banner3.jpg" onclick="bannerLink()">
             <div class="hero-overlay"></div>
             <div class="hero-content">
             </div>
@@ -1178,7 +1178,8 @@
                 });
             });
         });
-        function bannerLink(i) {
+        function bannerLink() {
+            console.log(this);
             const urls = ['/a/productions/', '/a/about/', '/a/about/?tab=honors'];
             const url = urls[i];
             window.location.href = url;
